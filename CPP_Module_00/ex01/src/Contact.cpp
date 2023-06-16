@@ -11,3 +11,20 @@
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+Contact::Contact()
+{
+	
+}
+
+Contact::~Contact()
+{
+
+}
+
+bool	Contact::isEmpty()
+{
+	if (m_first_name.size() == 0)
+		return (true);
+	return (false);
+}

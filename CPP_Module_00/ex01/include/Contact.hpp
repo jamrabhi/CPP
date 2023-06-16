@@ -20,8 +20,17 @@ class Contact
 {
 	public:
 
+	Contact();
+	bool isEmpty();
+	~Contact();
+
 	private:
-	std::string m_name;
+
+	std::string m_first_name;
+	std::string m_last_name;
+	std::string m_nickname;
+	std::string m_phone;
+	std::string m_secret;
 };
 
 #endif

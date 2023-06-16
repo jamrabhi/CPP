@@ -17,16 +17,18 @@
 # include <string>
 # include "Contact.hpp"
 
-class PhoneBook
+class	PhoneBook
 {
 	public:
 
+	PhoneBook();
 	void AddContact();
+	void SearchContact();
+	~PhoneBook();
 
 	private:
 
-	Contact m_contact;
-	std::string first_name;
+	Contact m_contact[7];
 };
 
 

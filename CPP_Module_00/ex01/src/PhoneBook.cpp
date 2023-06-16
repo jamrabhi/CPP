@@ -12,3 +12,21 @@
 
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook()
+{
+	
+}
+
+PhoneBook::~PhoneBook()
+{
+
+}
+
+void	PhoneBook::AddContact()
+{
+	// for (int i = 0; i < 7; i++)
+	// {
+	// 	if (m_contact[i].isEmpty() == true)
+	// 		break;
+	// }
+}
