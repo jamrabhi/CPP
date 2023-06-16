@@ -16,5 +16,6 @@ int	main()
 {
 	PhoneBook myphonebook;
 	
+	myphonebook.AddContact();
 	return (0);
 }

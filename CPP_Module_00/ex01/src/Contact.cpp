@@ -28,3 +28,17 @@ bool	Contact::isEmpty()
 		return (true);
 	return (false);
 }
+
+void	Contact::defineContact()
+{
+	std::cout << "Enter your first name :" << std::endl;
+	std::getline(std::cin, m_first_name);
+	std::cout << "Enter your last name :" << std::endl;
+	std::getline(std::cin, m_last_name);
+	std::cout << "Enter your nickname :" << std::endl;
+	std::getline(std::cin, m_nickname);
+	std::cout << "Enter your phone number :" << std::endl;
+	std::getline(std::cin, m_phone);
+	std::cout << "Enter your darkest secret :" << std::endl;
+	std::getline(std::cin, m_secret);
+}

@@ -24,9 +24,15 @@ PhoneBook::~PhoneBook()
 
 void	PhoneBook::AddContact()
 {
-	for (int i = 0; i < 7; i++)
+	int	i;
+
+	for (i = 0; i < 7; i++)
 	{
 		if (m_contact[i].isEmpty() == true)
+		{
+			std::cout << "contact[" << i << "] is empty" << std::endl;
 			break;
+		}
 	}
+	m_contact[i].defineContact();
 }

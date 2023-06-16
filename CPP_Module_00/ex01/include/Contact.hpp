@@ -22,6 +22,7 @@ class Contact
 
 	Contact();
 	bool isEmpty();
+	void defineContact();
 	~Contact();
 
 	private:
