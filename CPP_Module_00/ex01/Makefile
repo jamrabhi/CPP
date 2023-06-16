@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_DIR = src
 
-SRC_FILES = main.cpp PhoneBook.cpp
+SRC_FILES = main.cpp PhoneBook.cpp Contact.cpp
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 
