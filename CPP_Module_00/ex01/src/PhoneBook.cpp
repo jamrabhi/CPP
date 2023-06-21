@@ -29,10 +29,23 @@ void	PhoneBook::AddContact()
 	for (i = 0; i < 7; i++)
 	{
 		if (m_contact[i].isEmpty() == true)
-		{
-			std::cout << "contact[" << i << "] is empty" << std::endl;
 			break;
-		}
 	}
+	// std::cout << "contact[" << i << "] is empty" << std::endl;
 	m_contact[i].defineContact();
+}
+
+void	PhoneBook::SearchContact()
+{
+	std::cout << "     Index" << '|';
+	std::cout << "First name" << '|';
+	std::cout << " Last name" << '|';
+	std::cout << "  Nickname" << std::endl;
+	std::cout << std::string(43, '-') << std::endl;
+	for (int i = 0; i < 7; i++)
+	{
+		std::cout << std::string(9, '.') << i << '|';
+		m_contact[i].showContactRecap();
+		std::cout << std::endl;
+	}
 }

@@ -28,7 +28,7 @@ class	PhoneBook
 
 	private:
 
-	Contact m_contact[7];
+	Contact m_contact[8];
 };
 
 
