@@ -33,10 +33,10 @@ void	Contact::defineContact()
 {
 	std::cout << "Enter your first name :" << std::endl;
 	std::getline(std::cin, m_first_name);
-	// std::cout << "Enter your last name :" << std::endl;
-	// std::getline(std::cin, m_last_name);
-	// std::cout << "Enter your nickname :" << std::endl;
-	// std::getline(std::cin, m_nickname);
+	std::cout << "Enter your last name :" << std::endl;
+	std::getline(std::cin, m_last_name);
+	std::cout << "Enter your nickname :" << std::endl;
+	std::getline(std::cin, m_nickname);
 	// std::cout << "Enter your phone number :" << std::endl;
 	// std::getline(std::cin, m_phone);
 	// std::cout << "Enter your darkest secret :" << std::endl;
@@ -45,5 +45,9 @@ void	Contact::defineContact()
 
 void	Contact::showContactRecap()
 {
-	// std::cout << std::string(m_first_name, )
+	std::cout << std::setfill('.');
+	std::cout << std::setw(10) << m_first_name.substr(0, 10) << '|'; 
+	std::cout << std::setw(10) << m_last_name.substr(0, 10) << '|'; 
+	std::cout << std::setw(10) << m_nickname.substr(0, 10);
+	std::cout << std::setfill(' ');
 }

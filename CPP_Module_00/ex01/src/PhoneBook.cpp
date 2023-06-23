@@ -37,15 +37,15 @@ void	PhoneBook::AddContact()
 
 void	PhoneBook::SearchContact()
 {
-	std::cout << "     Index" << '|';
-	std::cout << "First name" << '|';
-	std::cout << " Last name" << '|';
-	std::cout << "  Nickname" << std::endl;
+	std::cout << std::setw(10) << "Index" << '|';
+	std::cout << std::setw(10) << "First name" << '|';
+	std::cout << std::setw(10) << "Last name" << '|';
+	std::cout << std::setw(10) << "Nickname" << std::endl;
 	std::cout << std::string(43, '-') << std::endl;
 	for (int i = 0; i < 7; i++)
 	{
 		std::cout << std::string(9, '.') << i << '|';
 		m_contact[i].showContactRecap();
-		std::cout << std::endl;
+		std::cout << std::endl; 
 	}
 }
