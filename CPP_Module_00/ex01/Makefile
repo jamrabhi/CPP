@@ -14,7 +14,7 @@ NAME = phonebook
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fno-limit-debug-info
 
 SRC_DIR = src
 
