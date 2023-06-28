@@ -20,7 +20,7 @@ Contact::~Contact()
 {
 }
 
-bool	Contact::isEmpty()
+bool	Contact::IsEmpty()
 {
 	if (m_first_name.size() == 0)
 		return (true);
@@ -41,7 +41,7 @@ std::string filterInput(const std::string str)
 	return (filteredInput);
 }
 
-void	Contact::defineContact()
+void	Contact::DefineContact()
 {
 	std::cout << "Enter your first name :" << std::endl;
 	std::getline(std::cin >> std::ws, m_first_name);
@@ -67,7 +67,7 @@ std::string truncateString(const std::string str, size_t width)
 	return (str);
 }
 
-void	Contact::showContactRecap()
+void	Contact::ShowContactRecap()
 {
 	std::cout << std::setfill('.');
 	std::cout << std::setw(10) << truncateString(m_first_name, 10) << '|'; 
@@ -76,7 +76,7 @@ void	Contact::showContactRecap()
 	std::cout << std::setfill(' ');
 }
 
-void	Contact::showContactDetails()
+void	Contact::ShowContactDetails()
 {
 	std::cout << "First name : " << m_first_name << std::endl;
 	std::cout << "Last name : " << m_last_name << std::endl;

@@ -34,5 +34,4 @@ class	PhoneBook
 	Contact m_contact[8];
 };
 
-
 #endif

@@ -14,10 +14,10 @@
 
 int	main()
 {
-	PhoneBook myphonebook;
+	PhoneBook	myphonebook;
 	std::string	cmd;
 
-	while (cmd.compare("EXIT"))
+	while (cmd.compare("EXIT") != 0)
 	{
 		std::cout << "Enter your command :" << std::endl;
 		std::getline(std::cin, cmd);
@@ -27,7 +27,9 @@ int	main()
 			myphonebook.AddContact();
 		else if (cmd.compare("SEARCH") == 0)
 			myphonebook.SearchContact();
-		else if (cmd.compare("EXIT"))
+		else if (cmd.compare("EXIT") == 0)
+			exit(EXIT_SUCCESS);
+		else
 			std::cout << "\033[1;31mInvalid command ! Enter a valid command (ADD, SEARCH or EXIT)\033[0m" << std::endl;
 		std::cout << std::endl;
 	}

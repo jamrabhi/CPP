@@ -24,10 +24,10 @@ class Contact
 	public:
 
 	Contact();
-	bool isEmpty();
-	void defineContact();
-	void showContactRecap();
-	void showContactDetails();
+	bool IsEmpty();
+	void DefineContact();
+	void ShowContactRecap();
+	void ShowContactDetails();
 	~Contact();
 
 	private:
