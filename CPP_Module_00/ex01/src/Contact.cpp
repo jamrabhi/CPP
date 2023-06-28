@@ -70,8 +70,8 @@ std::string truncateString(const std::string str, size_t width)
 void	Contact::ShowContactRecap()
 {
 	std::cout << std::setfill('.');
-	std::cout << std::setw(10) << truncateString(m_first_name, 10) << '|'; 
-	std::cout << std::setw(10) << truncateString(m_last_name, 10) << '|'; 
+	std::cout << std::setw(10) << truncateString(m_first_name, 10) << '|';
+	std::cout << std::setw(10) << truncateString(m_last_name, 10) << '|';
 	std::cout << std::setw(10) << truncateString(m_nickname, 10);
 	std::cout << std::setfill(' ');
 }
