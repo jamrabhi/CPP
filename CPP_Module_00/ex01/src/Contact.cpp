@@ -43,19 +43,19 @@ std::string filterInput(const std::string str)
 
 void	Contact::DefineContact()
 {
-	std::cout << "Enter your first name :" << std::endl;
+	std::cout << "First name :" << std::endl;
 	std::getline(std::cin >> std::ws, m_first_name);
 	m_first_name = filterInput(m_first_name);
-	std::cout << "Enter your last name :" << std::endl;
+	std::cout << "Last name :" << std::endl;
 	std::getline(std::cin >> std::ws, m_last_name);
 	m_last_name = filterInput(m_last_name);
-	std::cout << "Enter your nickname :" << std::endl;
+	std::cout << "Nickname :" << std::endl;
 	std::getline(std::cin >> std::ws, m_nickname);
 	m_nickname = filterInput(m_nickname);
-	std::cout << "Enter your phone number :" << std::endl;
+	std::cout << "Phone number :" << std::endl;
 	std::getline(std::cin >> std::ws, m_phone);
 	m_nickname = filterInput(m_nickname);
-	std::cout << "Enter your darkest secret :" << std::endl;
+	std::cout << "Darkest secret :" << std::endl;
 	std::getline(std::cin >> std::ws, m_secret);
 	m_secret = filterInput(m_secret);
 }
@@ -82,5 +82,5 @@ void	Contact::ShowContactDetails()
 	std::cout << "Last name : " << m_last_name << std::endl;
 	std::cout << "Nickname : " << m_nickname << std::endl;
 	std::cout << "Phone : " << m_phone << std::endl;
-	std::cout << "His darkest secret : " << m_secret << std::endl;
+	std::cout << "Darkest secret : " << m_secret << std::endl;
 }
