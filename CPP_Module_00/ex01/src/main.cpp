@@ -11,23 +11,25 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include "cstdlib"
 
 int	main()
 {
 	PhoneBook myphonebook;
 	std::string	cmd;
 
-	while (cmd.compare("EXIT") != 0)
+	while (cmd.compare("EXIT"))
 	{
 		std::cout << "Enter your command :" << std::endl;
 		std::getline(std::cin, cmd);
-		if (cmd.compare("ADD") == 0)
+		if (std::cin.eof())
+			exit(EXIT_FAILURE);
+		else if (cmd.compare("ADD") == 0)
 			myphonebook.AddContact();
 		else if (cmd.compare("SEARCH") == 0)
 			myphonebook.SearchContact();
-		else if (std::cin.eof())
-			exit(EXIT_FAILURE);
+		else if (cmd.compare("EXIT"))
+			std::cout << "\033[1;31mInvalid command ! Enter a valid command (ADD, SEARCH or EXIT)\033[0m" << std::endl;
+		std::cout << std::endl;
 	}
 	return (0);
 }

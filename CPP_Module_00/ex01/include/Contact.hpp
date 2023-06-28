@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <cstdlib>
+# include <limits>
 
 class Contact
 {
@@ -25,6 +27,7 @@ class Contact
 	bool isEmpty();
 	void defineContact();
 	void showContactRecap();
+	void showContactDetails();
 	~Contact();
 
 	private:

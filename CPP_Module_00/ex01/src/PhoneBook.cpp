@@ -14,29 +14,18 @@
 
 PhoneBook::PhoneBook()
 {
-	
 }
 
 PhoneBook::~PhoneBook()
 {
-
 }
 
 void	PhoneBook::AddContact()
 {
-	// int	i;
-
-    for (int i = 7; i > 0; --i) // check si c good
-    {
-        m_contact[i] = m_contact[i - 1];
-    }
-	// for (i = 0; i < 8; i++)
-	// {
-	// 	if (m_contact[i].isEmpty() == true)
-	// 		break;
-	// }
+	for (int i = 7; i > 0; --i)
+		m_contact[i] = m_contact[i - 1];
 	m_contact[0].defineContact();
-	std::cout << std::endl << "Successfully registered" << std::endl << std::endl;
+	std::cout << "\033[1;32mSuccessfully registered !\033[0m" << std::endl;
 }
 
 void	PhoneBook::SearchContact()
@@ -54,15 +43,27 @@ void	PhoneBook::SearchContact()
 		m_contact[i].showContactRecap();
 		std::cout << std::endl; 
 	}
-	std::cout << "Enter the index to display :" << std::endl;
+	std::cout << "Enter the index of the contact to display :" << std::endl;
 	std::cin >> index;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // A check si avant ou apres
-	if (std::cin.fail() || (index < 0 || index > 7))
+	if (std::cin.eof())
+		exit(EXIT_FAILURE);
+	else if (std::cin.fail() || (index < 0 || index > 7))
 	{
 		std::cin.clear();
-		std::cout << "Invalid input. Please enter a valid index." << std::endl; // A check si avant ou apres
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "\033[1;31mInvalid input. Enter a valid index (between 0 and 7)\033[0m"
+			<< std::endl;
+		SearchContact();
 	}
 	else
-		std::cout << "Index typed = '" << index << "'" << std::endl;
+	{
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (m_contact[index].isEmpty())
+			std::cout << "\033[1;31mContact #" << index <<" is empty\033[0m" << std::endl;
+		else
+		{
+			std::cout << "\033[1;34mContact #" << index << " details\033[0m" << std::endl;
+			m_contact[index].showContactDetails();
+		}
+	}
 }

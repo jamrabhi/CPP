@@ -13,13 +13,11 @@
 #include "Contact.hpp"
 
 Contact::Contact()
-{
-	
+{	
 }
 
 Contact::~Contact()
 {
-
 }
 
 bool	Contact::isEmpty()
@@ -32,6 +30,9 @@ bool	Contact::isEmpty()
 std::string filterInput(const std::string str)
 {
 	std::string filteredInput;
+
+	if (std::cin.eof())
+		exit(EXIT_FAILURE);
 	for (std::string::size_type i = 0; i < str.length(); ++i)
 	{
 		if (std::isalnum(str[i]) || str[i] == ' ' || str[i] == '-')
@@ -75,3 +76,11 @@ void	Contact::showContactRecap()
 	std::cout << std::setfill(' ');
 }
 
+void	Contact::showContactDetails()
+{
+	std::cout << "First name : " << m_first_name << std::endl;
+	std::cout << "Last name : " << m_last_name << std::endl;
+	std::cout << "Nickname : " << m_nickname << std::endl;
+	std::cout << "Phone : " << m_phone << std::endl;
+	std::cout << "His darkest secret : " << m_secret << std::endl;
+}

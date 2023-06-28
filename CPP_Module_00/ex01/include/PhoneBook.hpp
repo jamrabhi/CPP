@@ -17,6 +17,7 @@
 # include <string>
 # include <iomanip>
 # include <limits>
+# include <cstdlib>
 # include "Contact.hpp"
 
 class	PhoneBook
