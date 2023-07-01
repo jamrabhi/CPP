@@ -12,28 +12,28 @@
 
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
+#include <iomanip>
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
-Account::Account(int initial_deposit)
+Account::Account(int initial_deposit) : _accountIndex(_nbAccounts++), _amount(initial_deposit),
+										_nbDeposits(0), _nbWithdrawals(0)
 {
-	_amount = initial_deposit;
 	_totalAmount += initial_deposit;
-	_accountIndex = _nbAccounts;
-	_nbAccounts++;
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created"
-		<< std::endl;
+	std::cout << "index:" << _accountIndex << ";amount:" << checkAmount()
+		<< ";created" << std::endl;
 }
 
 Account::~Account()
 {
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed"
-		<< std::endl;
+	std::cout << "index:" << _accountIndex << ";amount:" << checkAmount() 
+		<< ";closed" << std::endl;
 }
 
 int		Account::getNbAccounts()
@@ -67,25 +67,32 @@ void	Account::displayAccountsInfos()
 void	Account::makeDeposit(int deposit)
 {
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";p_amount:" << _amount
+	std::cout << "index:" << _accountIndex << ";p_amount:" << checkAmount()
 		<< ";deposit:" << deposit;
 	_nbDeposits++;
 	_totalNbDeposits++;
 	_totalAmount += deposit;
 	_amount += deposit;
-	std::cout << ";amount:" << _amount << ";nb_deposits:" << _nbDeposits
+	std::cout << ";amount:" << checkAmount() << ";nb_deposits:" << _nbDeposits
 		<< std::endl;
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
 {
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";p_amount:" << checkAmount()
+		<< ";withdrawal:";
 	if (_amount - withdrawal > 0)
 	{
 		_nbWithdrawals++;
 		_totalNbWithdrawals++;
+		_totalAmount -= withdrawal;
 		_amount -= withdrawal;
+		std::cout << withdrawal << ";amount:" << checkAmount() 
+			<< ";nb_withdrawals:" << _nbWithdrawals << std::endl; 
 		return (true);
 	}
+	std::cout << "refused" << std::endl;
 	return (false);
 }
 
@@ -104,5 +111,12 @@ void	Account::displayStatus() const
 
 void	Account::_displayTimestamp()
 {
-	std::cout << "[19920104_091532] ";
+	// std::cout << "[19920104_091532] ";
+	time_t currentTime = std::time(0);
+	char timestamp[16];
+	tm* timeinfo;
+	
+	timeinfo = std::localtime(&currentTime);
+	strftime(timestamp, sizeof(timestamp), "%Y%m%d_%H%M%S", timeinfo);
+	std::cout << "[" << timestamp << "] ";
 }
