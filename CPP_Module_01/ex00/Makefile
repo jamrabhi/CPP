@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_DIR = src
 
-SRC_FILES = tests.cpp Account.cpp
+SRC_FILES = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 

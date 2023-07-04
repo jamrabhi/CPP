@@ -10,4 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
 
+int	main()
+{
+	Zombie zombie("zombie");
+	
+	zombie.announce();
+
+	Zombie *newZ;
+
+	newZ = newZombie("newZ");
+	newZ->announce();
+	delete newZ;
+
+	randomChump("randomZ");
+	return (0);
+}
