@@ -14,14 +14,19 @@
 # define MYSED_HPP
 
 #include <string>
+#include <iostream>
+#include <fstream>
 
 class MySed
 {
 	public:
-		MySed(/* args */);
+		MySed(char *filename, std::string s1, std::string s2);
 		~MySed();
 
 	private:
+		char	*_filename;
+		std::string	_s1;
+		std::string	_s2;
 };
 
 #endif

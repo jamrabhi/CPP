@@ -11,3 +11,22 @@
 /* ************************************************************************** */
 
 #include "MySed.hpp"
+
+MySed::MySed(char *filename, std::string s1, std::string s2) :
+			_filename(filename), _s1(s1), _s2(s2)
+{
+	std::ofstream file(_filename);
+	if (file.is_open())
+	{
+		file << "yep" << std::endl;
+		file.close();
+	}
+	else
+		std::cerr << "error couldn't open" << std::endl;
+}
+
+MySed::~MySed()
+{
+}
+
+
