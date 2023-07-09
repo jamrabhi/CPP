@@ -44,19 +44,18 @@ int	MySed::replace()
 		else
 		{
 			std::string	line;
-			size_t		pos = 0;
 
 			while(std::getline(infile, line))
 			{
-				for (size_t found = line.find(_s1); found != std::string::npos; pos = found)
+				for (size_t found = line.find(_s1); found != std::string::npos; found = line.find(_s1, found))
 				{
-					std::cout << "found / pos = " << found << pos << std::endl;
-					found = pos;
+					line.erase(found, _s1.length());
+					line.insert(found, _s2);
 				}
 				outfile << line << std::endl;
 			}
 		}
-
+		outfile.close();
 		infile.close();
 	}
 	return (0);
