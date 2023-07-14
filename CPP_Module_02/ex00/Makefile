@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harlFilter
+NAME = a.out
 
 CC = c++
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_DIR = src
 
-SRC_FILES = main.cpp Harl.cpp
+SRC_FILES = main.cpp Fixed.cpp
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 
