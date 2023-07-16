@@ -23,6 +23,14 @@ Fixed::Fixed(Fixed const &src)
 	*this = src;
 }
 
+Fixed::Fixed(const int fixedValue) : _fixedValue(fixedValue)
+{
+}
+
+Fixed::Fixed(const float fixedValue) : _fixedValue(fixedValue)
+{
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -46,4 +54,24 @@ void	Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	_fixedValue = raw;
+}
+
+float	Fixed::toFloat() const
+{
+	float i = 0;
+
+	return (i);
+}
+
+int	Fixed::toInt() const
+{
+	int i = 0;
+
+	return (i);
+}
+
+std::ostream	&operator<<(std::ostream &o, Fixed const &rhs)
+{
+	o << rhs.getRawBits();
+	return (o);
 }
