@@ -12,6 +12,10 @@
 
 #include "Fixed.hpp"
 
+/* ************************************************************************** */
+/* 							CONSTRUCTORS / DESTRUCTORS						  */
+/* ************************************************************************** */
+
 Fixed::Fixed() : _fixedValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -38,7 +42,11 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed	&Fixed::operator=(Fixed const &rhs)
+/* ************************************************************************** */
+/* 									OPERATORS								  */
+/* ************************************************************************** */
+
+Fixed			&Fixed::operator=(Fixed const &rhs)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
@@ -46,7 +54,17 @@ Fixed	&Fixed::operator=(Fixed const &rhs)
 	return (*this);
 }
 
-int	Fixed::getRawBits() const
+std::ostream	&operator<<(std::ostream &o, Fixed const &rhs)
+{
+	o << rhs.toFloat();
+	return (o);
+}
+
+/* ************************************************************************** */
+/* 								MEMBER FUNCTIONS							  */
+/* ************************************************************************** */
+
+int		Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (_fixedValue);
@@ -63,13 +81,7 @@ float	Fixed::toFloat() const
 	return ((float)_fixedValue / (1 << _fractBits));
 }
 
-int	Fixed::toInt() const
+int		Fixed::toInt() const
 {
 	return (_fixedValue >> _fractBits);
-}
-
-std::ostream	&operator<<(std::ostream &o, Fixed const &rhs)
-{
-	o << rhs.toFloat();
-	return (o);
 }
