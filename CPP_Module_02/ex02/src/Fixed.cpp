@@ -167,50 +167,50 @@ Fixed			Fixed::operator--(int)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-int		Fixed::getRawBits() const
+int			Fixed::getRawBits() const
 {
 	// std::cout << "getRawBits member function called" << std::endl;
 	return (_fixedValue);
 }
 
-void	Fixed::setRawBits(int const raw)
+void		Fixed::setRawBits(int const raw)
 {
 	// std::cout << "setRawBits member function called" << std::endl;
 	_fixedValue = raw;
 }
 
-float	Fixed::toFloat() const
+float		Fixed::toFloat() const
 {
 	return ((float)_fixedValue / (1 << _fractBits));
 }
 
-int		Fixed::toInt() const
+int			Fixed::toInt() const
 {
 	return (_fixedValue >> _fractBits);
 }
 
-Fixed	&Fixed::min(Fixed &a, Fixed &b)
+Fixed		&Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a <= b)
 		return (a);
 	return (b);
 }
 
-Fixed	const &Fixed::min(Fixed const &a, Fixed const &b)
+Fixed const	&Fixed::min(Fixed const &a, Fixed const &b)
 {
 	if (a <= b)
 		return (a);
 	return (b);
 }
 
-Fixed	&Fixed::max(Fixed &a, Fixed &b)
+Fixed		&Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a >= b)
 		return (a);
 	return (b);
 }
 
-Fixed	const &Fixed::max(Fixed const &a, Fixed const &b)
+Fixed const	&Fixed::max(Fixed const &a, Fixed const &b)
 {
 	if (a >= b)
 		return (a);
