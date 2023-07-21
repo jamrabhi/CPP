@@ -11,17 +11,11 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main()
 {
-	ClapTrap a("Joe");
-	ClapTrap b("Mike");
-	ClapTrap c;
-
-	a.attack("Mike");
-	b.takeDamage(0);
-	b.beRepaired(0);
-	c.attack("Mike");
+	ScavTrap();
 
 	return (0);
 }
