@@ -42,7 +42,7 @@ ClapTrap::~ClapTrap()
 /* 									OPERATORS								  */
 /* ************************************************************************** */
 
-ClapTrap			&ClapTrap::operator=(ClapTrap const &rhs)
+ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
 {
 	if (this != &rhs)
 	{

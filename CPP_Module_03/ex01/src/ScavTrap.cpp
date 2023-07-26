@@ -46,7 +46,7 @@ ScavTrap::~ScavTrap()
 /* 									OPERATORS								  */
 /* ************************************************************************** */
 
-ScavTrap			&ScavTrap::operator=(ScavTrap const &rhs)
+ScavTrap	&ScavTrap::operator=(ScavTrap const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -62,3 +62,22 @@ ScavTrap			&ScavTrap::operator=(ScavTrap const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
+void	ScavTrap::attack(const std::string &target)
+{
+	if (_hitPoints <= 0)
+	{
+		std::cout << "ScavTrap " << _name << " is dead! He can't attack " 
+			<< target << std::endl;
+	}
+	else if (_energyPoints > 0)
+	{
+		_energyPoints--;
+		std::cout << "ScavTrap " << _name << " attacks " << target <<
+			", causing " << _attackDamage << " points of damage!" << std::endl;
+	}
+	else
+	{
+		std::cout << "ScavTrap " << _name << " can't attack " << target
+			<< ", not enough energy points" << std::endl;
+	}
+}

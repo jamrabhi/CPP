@@ -15,7 +15,8 @@
 
 int	main()
 {
-	ScavTrap();
+	ScavTrap a;
 
+	a.attack("Nothing");
 	return (0);
 }
