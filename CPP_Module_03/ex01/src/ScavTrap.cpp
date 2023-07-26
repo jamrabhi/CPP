@@ -64,7 +64,7 @@ ScavTrap	&ScavTrap::operator=(ScavTrap const &rhs)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	if (_hitPoints <= 0)
+	if (_hitPoints == 0)
 	{
 		std::cout << "ScavTrap " << _name << " is dead! He can't attack " 
 			<< target << std::endl;
@@ -80,4 +80,14 @@ void	ScavTrap::attack(const std::string &target)
 		std::cout << "ScavTrap " << _name << " can't attack " << target
 			<< ", not enough energy points" << std::endl;
 	}
+}
+
+void	ScavTrap::guardGate()
+{
+	if (_hitPoints == 0)
+		std::cout << "ScavTrap " << _name << 
+			" is dead! He can't enter in Gate keeper mode" << std::endl;
+	else
+		std::cout << "ScavTrap " << _name << 
+			" is now in Gate keeper mode" << std::endl;
 }

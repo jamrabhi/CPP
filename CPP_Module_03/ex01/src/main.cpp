@@ -15,8 +15,19 @@
 
 int	main()
 {
-	ScavTrap a;
+	ScavTrap a("Joe");
+	ScavTrap b("Mike");
 
-	a.attack("Nothing");
+	a.attack("Mike");
+	b.takeDamage(20);
+	a.attack("Mike");
+	b.takeDamage(20);
+	a.attack("Mike");
+	b.takeDamage(20);
+	a.attack("Mike");
+	b.takeDamage(20);
+	a.attack("Mike");
+	b.takeDamage(20);
+	b.guardGate();
 	return (0);
 }

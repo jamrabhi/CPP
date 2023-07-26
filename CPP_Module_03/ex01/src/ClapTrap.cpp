@@ -60,7 +60,7 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (_hitPoints <= 0)
+	if (_hitPoints == 0)
 	{
 		std::cout << "ClapTrap " << _name << " is dead! He can't attack " 
 			<< target << std::endl;
@@ -91,14 +91,14 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		if (_hitPoints == 0)
 			std::cout << "ClapTrap " << _name << " is now dead!" << std::endl;
 		else
-			std::cout << "ClapTrap " << _name << " has been attacked! Remaining HP :"
+			std::cout << "ClapTrap " << _name << " has been attacked! Remaining HP : "
 			<< _hitPoints << std::endl;
 	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (_hitPoints <= 0)
+	if (_hitPoints == 0)
 	{
 		std::cout << "ClapTrap " << _name <<
 			" is already dead! He can't be repaired" << std::endl;
