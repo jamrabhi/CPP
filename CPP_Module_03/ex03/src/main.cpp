@@ -17,7 +17,14 @@
 
 int	main()
 {
-	DiamondTrap a("test");
+	DiamondTrap b("ja");
+	DiamondTrap	a = b;
+
+	a.whoAmI();
+	a.highFivesGuys();
+	a.attack("Joe");
+	a.beRepaired(10);
+	a.guardGate();
 
 	return (0);
 }

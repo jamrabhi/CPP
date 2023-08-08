@@ -16,19 +16,21 @@
 /* 							CONSTRUCTORS / DESTRUCTORS						  */
 /* ************************************************************************** */
 
-DiamondTrap::DiamondTrap() : ClapTrap(), FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap()
 {
-	_hitPoints = 100;
-	_energyPoints = 100;
-	_attackDamage = 30;
+	_name = "Random";
+	_hitPoints = FragTrap::_hitPoints;
+	_energyPoints = ScavTrap::_energyPoints;
+	_attackDamage = FragTrap::_attackDamage;
 	std::cout << "DiamondTrap " << _name << " has been created" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name) , ScavTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
 {
-	_hitPoints = 100;
-	_energyPoints = 100;
-	_attackDamage = 30;
+	_name = name;
+	_hitPoints = FragTrap::_hitPoints;
+	_energyPoints = ScavTrap::_energyPoints;
+	_attackDamage = FragTrap::_attackDamage;
 	std::cout << "DiamondTrap " << _name << " has been created" << std::endl;
 }
 
@@ -64,22 +66,7 @@ DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &rhs)
 
 void	DiamondTrap::attack(const std::string &target)
 {
-	if (_hitPoints == 0)
-	{
-		std::cout << "DiamondTrap " << _name << " is dead! He can't attack " 
-			<< target << std::endl;
-	}
-	else if (_energyPoints > 0)
-	{
-		_energyPoints--;
-		std::cout << "DiamondTrap " << _name << " attacks " << target <<
-			", causing " << _attackDamage << " points of damage!" << std::endl;
-	}
-	else
-	{
-		std::cout << "DiamondTrap " << _name << " can't attack " << target
-			<< ", not enough energy points" << std::endl;
-	}
+	ScavTrap::attack(target);
 }
 
 void	DiamondTrap::guardGate()
@@ -92,7 +79,8 @@ void	DiamondTrap::guardGate()
 			" is now in Gate keeper mode" << std::endl;
 }
 
-void	DiamondTrap::highFivesGuys()
+void	DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap " << _name << " : Give me high five !" << std::endl;
+	std::cout << "DiamondTrap name : " << _name << std::endl;
+	std::cout << "ClapTrap name : " << ClapTrap::_name << std::endl;
 }

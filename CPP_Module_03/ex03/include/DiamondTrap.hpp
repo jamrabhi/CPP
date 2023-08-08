@@ -13,6 +13,7 @@
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 
+# include "ClapTrap.hpp"
 # include "FragTrap.hpp"
 # include "ScavTrap.hpp"
 # include <iostream>
@@ -30,7 +31,10 @@ class DiamondTrap : public FragTrap, public ScavTrap
 
 		void	attack(const std::string &target);
 		void	guardGate();
-		void	highFivesGuys();
+		void	whoAmI();
+
+	private:
+		std::string	_name;
 };
 
 #endif
