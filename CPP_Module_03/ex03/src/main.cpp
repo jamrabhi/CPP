@@ -17,8 +17,7 @@
 
 int	main()
 {
-	DiamondTrap b("ja");
-	DiamondTrap	a = b;
+	DiamondTrap	a("Diamond");
 
 	a.whoAmI();
 	a.highFivesGuys();
