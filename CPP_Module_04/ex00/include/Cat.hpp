@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:02:44 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/07 16:20:14 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/22 23:22:25 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ class Cat : public Animal
 	public:
 		Cat();
 		Cat(Cat const &src);
-		~Cat();
+		virtual	~Cat();
 
 		Cat 	&operator=(Cat const &rhs);
 
-	protected:
-		std::string		_type;
+		virtual void	makeSound() const;
 };
 
 #endif

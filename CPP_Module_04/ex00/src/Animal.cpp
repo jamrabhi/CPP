@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:22:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/07 16:26:12 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/22 23:38:22 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 Animal::Animal()
 {
+	std::cout << "Animal class has been created" << std::endl;
 }
 
 Animal::Animal(Animal const &src)
@@ -27,6 +28,7 @@ Animal::Animal(Animal const &src)
 
 Animal::~Animal()
 {
+	std::cout << "Animal class has been destroyed" << std::endl;
 }
 
 /* ************************************************************************** */
@@ -45,3 +47,12 @@ Animal	&Animal::operator=(Animal const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
+std::string	Animal::getType() const
+{
+	return (type);
+}
+
+void	Animal::makeSound() const
+{
+	std::cout << "Animal sound" << std::endl;
+}

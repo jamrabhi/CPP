@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:23:02 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/07 16:27:10 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/22 22:20:01 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,20 @@
 /* 							CONSTRUCTORS / DESTRUCTORS						  */
 /* ************************************************************************** */
 
-Dog::Dog()
+Dog::Dog() : Animal()
 {
+	type = "Dog";
+	std::cout << getType() << " class has been created" << std::endl;
 }
 
-Dog::Dog(Dog const &src)
+Dog::Dog(Dog const &src) : Animal(src)
 {
 	*this = src;
 }
 
 Dog::~Dog()
 {
+	std::cout << getType() << " class has been destroyed" << std::endl;
 }
 
 /* ************************************************************************** */
@@ -45,3 +48,7 @@ Dog	&Dog::operator=(Dog const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
+void	Dog::makeSound() const
+{
+	std::cout << "WOAF WOAF" << std::endl;
+}

@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 16:22:30 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 22:19:56 by jamrabhi         ###   ########.fr       */
+/*   Created: 2023/09/22 22:59:47 by jamrabhi          #+#    #+#             */
+/*   Updated: 2023/09/22 23:24:30 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongAnimal.hpp"
 
 /* ************************************************************************** */
 /* 							CONSTRUCTORS / DESTRUCTORS						  */
 /* ************************************************************************** */
 
-Cat::Cat() : Animal()
+WrongAnimal::WrongAnimal()
 {
-	type = "Cat";
-	std::cout << getType() << " class has been created" << std::endl;
+	std::cout << "Wrong animal class has been created" << std::endl;
 }
 
-Cat::Cat(Cat const &src) : Animal(src)
+WrongAnimal::WrongAnimal(WrongAnimal const &src)
 {
 	*this = src;
 }
 
-Cat::~Cat()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << getType() << " class has been destroyed" << std::endl;
+	std::cout << "Wrong animal class has been destroyed" << std::endl;
 }
 
 /* ************************************************************************** */
 /* 									OPERATORS								  */
 /* ************************************************************************** */
 
-Cat	&Cat::operator=(Cat const &rhs)
+WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &rhs)
 {
-	if (this != &rhs)
+	if ( this != &rhs )
 	{
 	}
 	return (*this);
@@ -48,8 +47,13 @@ Cat	&Cat::operator=(Cat const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-void	Cat::makeSound() const
+std::string	WrongAnimal::getType() const
 {
-	std::cout << "MIAOU MIAOU" << std::endl;
+	return (type);
+}
+
+void		WrongAnimal::makeSound() const
+{
+	std::cout << "Wrong animal sound" << std::endl;
 }
 

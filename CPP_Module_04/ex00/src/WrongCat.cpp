@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 16:22:30 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 22:19:56 by jamrabhi         ###   ########.fr       */
+/*   Created: 2023/09/22 23:25:59 by jamrabhi          #+#    #+#             */
+/*   Updated: 2023/09/22 23:27:49 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
 /* ************************************************************************** */
 /* 							CONSTRUCTORS / DESTRUCTORS						  */
 /* ************************************************************************** */
 
-Cat::Cat() : Animal()
+WrongCat::WrongCat()
 {
-	type = "Cat";
+	type = "WrongCat";
 	std::cout << getType() << " class has been created" << std::endl;
 }
 
-Cat::Cat(Cat const &src) : Animal(src)
+WrongCat::WrongCat(WrongCat const &src)
 {
 	*this = src;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
 	std::cout << getType() << " class has been destroyed" << std::endl;
 }
@@ -36,7 +36,7 @@ Cat::~Cat()
 /* 									OPERATORS								  */
 /* ************************************************************************** */
 
-Cat	&Cat::operator=(Cat const &rhs)
+WrongCat	&WrongCat::operator=(WrongCat const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -48,8 +48,8 @@ Cat	&Cat::operator=(Cat const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "MIAOU MIAOU" << std::endl;
+	std::cout << "FAKE MIAOU MIAOU" << std::endl;
 }
 
