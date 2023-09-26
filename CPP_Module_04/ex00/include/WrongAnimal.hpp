@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:46:34 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 23:26:28 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/27 00:01:14 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class WrongAnimal
 		WrongAnimal	&operator=(WrongAnimal const &rhs);
 
 		std::string		getType() const;
-		virtual void	makeSound() const;
+		void			makeSound() const;
 
 	protected:
 		std::string		type;

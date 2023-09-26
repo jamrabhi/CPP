@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/27 00:01:35 by jamrabhi          #+#    #+#             */
+/*   Updated: 2023/09/27 00:01:36 by jamrabhi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
@@ -14,7 +26,7 @@ class WrongCat : public WrongAnimal
 
 		WrongCat	&operator=(WrongCat const &rhs);
 
-		virtual void	makeSound() const;
+		void		makeSound() const;
 
 	private:
 		
