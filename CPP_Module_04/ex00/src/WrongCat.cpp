@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 23:25:59 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 23:27:49 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:57:39 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ WrongCat	&WrongCat::operator=(WrongCat const &rhs)
 
 void	WrongCat::makeSound() const
 {
-	std::cout << "FAKE MIAOU MIAOU" << std::endl;
+	std::cout << "*FAKE MIAOU MIAOU*" << std::endl;
 }
 

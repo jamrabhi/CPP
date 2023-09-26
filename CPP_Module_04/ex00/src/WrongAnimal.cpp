@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:59:47 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 23:24:30 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:58:03 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ std::string	WrongAnimal::getType() const
 
 void		WrongAnimal::makeSound() const
 {
-	std::cout << "Wrong animal sound" << std::endl;
+	std::cout << "*FAKE ANIMAL SOUND*" << std::endl;
 }
 

@@ -1,0 +1,23 @@
+Animal class has been created
+Animal class has been created
+Dog class has been created
+Animal class has been created
+Cat class has been created
+Dog 
+Cat 
+MIAOU MIAOU
+WOAF WOAF
+*Animal sound*
+Wrong animal class has been created
+Wrong animal class has been created
+WrongCat class has been created
+FAKE MIAOU MIAOU
+Wrong animal sound
+Animal class has been destroyed
+Cat class has been destroyed
+Animal class has been destroyed
+Dog class has been destroyed
+Animal class has been destroyed
+Wrong animal class has been destroyed
+WrongCat class has been destroyed
+Wrong animal class has been destroyed

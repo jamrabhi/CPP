@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:22:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 23:38:22 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:58:12 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ std::string	Animal::getType() const
 
 void	Animal::makeSound() const
 {
-	std::cout << "Animal sound" << std::endl;
+	std::cout << "*ANIMAL SOUND*" << std::endl;
 }

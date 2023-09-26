@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:22:30 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 22:19:56 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:57:14 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ Cat	&Cat::operator=(Cat const &rhs)
 
 void	Cat::makeSound() const
 {
-	std::cout << "MIAOU MIAOU" << std::endl;
+	std::cout << "*MIAOU MIAOU*" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:23:02 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/22 22:20:01 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:57:00 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ Dog	&Dog::operator=(Dog const &rhs)
 
 void	Dog::makeSound() const
 {
-	std::cout << "WOAF WOAF" << std::endl;
+	std::cout << "*WOAF WOAF*" << std::endl;
 }
