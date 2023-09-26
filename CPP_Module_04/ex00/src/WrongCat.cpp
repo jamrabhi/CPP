@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 23:25:59 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/26 20:57:39 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 23:00:53 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ WrongCat::WrongCat()
 
 WrongCat::WrongCat(WrongCat const &src)
 {
+	type = src.type;
+	std::cout << getType() << " copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -40,6 +42,7 @@ WrongCat	&WrongCat::operator=(WrongCat const &rhs)
 {
 	if (this != &rhs)
 	{
+		type = rhs.type;
 	}
 	return (*this);
 }

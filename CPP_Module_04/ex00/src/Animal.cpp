@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:22:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/26 20:58:12 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 22:57:29 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Animal::Animal()
 
 Animal::Animal(Animal const &src)
 {
+	std::cout << "Animal copy constructor called" << std::endl;
 	*this = src;
 }
 

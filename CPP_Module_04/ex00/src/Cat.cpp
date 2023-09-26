@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:22:30 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/26 20:57:14 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 23:01:16 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ Cat::Cat() : Animal()
 
 Cat::Cat(Cat const &src) : Animal(src)
 {
+	type = src.type;
+	std::cout << getType() << " copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -40,6 +42,7 @@ Cat	&Cat::operator=(Cat const &rhs)
 {
 	if (this != &rhs)
 	{
+		type = rhs.type;
 	}
 	return (*this);
 }

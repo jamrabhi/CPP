@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:23:02 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/26 20:57:00 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/26 22:59:01 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ Dog::Dog() : Animal()
 
 Dog::Dog(Dog const &src) : Animal(src)
 {
+	type = src.type;
+	std::cout << getType() << " copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -40,6 +42,7 @@ Dog	&Dog::operator=(Dog const &rhs)
 {
 	if (this != &rhs)
 	{
+		type = rhs.type;
 	}
 	return (*this);
 }
