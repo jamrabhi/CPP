@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:10:01 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/26 23:10:01 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/27 00:10:33 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ class Brain
 		~Brain();
 
 		Brain	&operator=(Brain const &rhs);
-
-	private:
 		
+		std::string	ideas[100];
 };
 
 #endif

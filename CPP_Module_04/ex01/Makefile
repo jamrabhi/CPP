@@ -6,7 +6,7 @@
 #    By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 03:13:41 by jamrabhi          #+#    #+#              #
-#    Updated: 2023/09/22 23:09:43 by jamrabhi         ###   ########.fr        #
+#    Updated: 2023/09/26 23:18:07 by jamrabhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_DIR = src
 
-SRC_FILES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC_FILES =	main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp \
+			Brain.cpp
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 

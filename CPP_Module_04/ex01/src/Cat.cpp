@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:22:30 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/09/26 23:01:16 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/09/27 01:14:47 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@
 Cat::Cat() : Animal()
 {
 	type = "Cat";
+	_brain = new Brain();
 	std::cout << getType() << " class has been created" << std::endl;
 }
 
 Cat::Cat(Cat const &src) : Animal(src)
 {
 	type = src.type;
+	_brain = new Brain(*src._brain);
 	std::cout << getType() << " copy constructor called" << std::endl;
 	*this = src;
 }
 
 Cat::~Cat()
 {
+	delete _brain;
 	std::cout << getType() << " class has been destroyed" << std::endl;
 }
 
@@ -43,6 +46,8 @@ Cat	&Cat::operator=(Cat const &rhs)
 	if (this != &rhs)
 	{
 		type = rhs.type;
+		delete _brain;
+		_brain = new Brain(*rhs._brain);
 	}
 	return (*this);
 }
@@ -56,3 +61,13 @@ void	Cat::makeSound() const
 	std::cout << "*MIAOU MIAOU*" << std::endl;
 }
 
+void	Cat::setIdea(std::string idea)
+{
+	_brain->ideas[0] = idea;
+}
+
+
+std::string	Cat::getIdea() const
+{
+	return (_brain->ideas[0]);
+}
