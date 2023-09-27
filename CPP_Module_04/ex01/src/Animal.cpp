@@ -57,3 +57,13 @@ void	Animal::makeSound() const
 {
 	std::cout << "*ANIMAL SOUND*" << std::endl;
 }
+
+void	Animal::setIdea(std::string idea)
+{
+	(void)idea;
+}
+
+std::string	Animal::getIdea() const
+{
+	return (std::string());
+}
