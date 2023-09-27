@@ -16,13 +16,13 @@
 /* 							CONSTRUCTORS / DESTRUCTORS						  */
 /* ************************************************************************** */
 
-WrongCat::WrongCat()
+WrongCat::WrongCat() : WrongAnimal()
 {
 	type = "WrongCat";
 	std::cout << getType() << " class has been created" << std::endl;
 }
 
-WrongCat::WrongCat(WrongCat const &src)
+WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
 {
 	type = src.type;
 	std::cout << getType() << " copy constructor called" << std::endl;
