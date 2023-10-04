@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:16:01 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/04 19:18:23 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:02:15 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ Bureaucrat		&Bureaucrat::operator=(Bureaucrat const &rhs)
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &rhs)
 {
-	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << "." << std::endl;
+	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << ".";
 	return (o);
 }
 
@@ -72,11 +72,15 @@ int			Bureaucrat::getGrade() const
 
 void		Bureaucrat::incrementGrade()
 {
+	if (_grade < 2)
+		throw GradeTooHighException();
 	_grade--;
 }
 
 void		Bureaucrat::decrementGrade()
 {
+	if (_grade > 149)
+		throw GradeTooLowException();
 	_grade++;
 }
 
