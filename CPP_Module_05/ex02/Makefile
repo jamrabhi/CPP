@@ -6,7 +6,7 @@
 #    By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 03:13:41 by jamrabhi          #+#    #+#              #
-#    Updated: 2023/10/05 17:26:24 by jamrabhi         ###   ########.fr        #
+#    Updated: 2023/10/05 17:56:16 by jamrabhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_DIR = src
 
-SRC_FILES =	main.cpp Bureaucrat.cpp AForm.cpp
+SRC_FILES =	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 

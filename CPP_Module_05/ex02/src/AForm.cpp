@@ -6,23 +6,27 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:56:08 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/05 17:38:15 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:52:55 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
+std::string AForm::_name;
+
 /* ************************************************************************** */
 /* 							CONSTRUCTORS / DESTRUCTORS						  */
 /* ************************************************************************** */
 
-AForm::AForm() : _name("Random"), _signed(false), _gradeToSign(150), _gradeToExec(150)
+AForm::AForm() : _signed(false), _gradeToSign(150), _gradeToExec(150)
 {
+	_name = "Random";
 }
 
-AForm::AForm(std::string name, int toSign, int toExec) : _name(name), _signed(false),
+AForm::AForm(std::string name, int toSign, int toExec) : _signed(false),
 		_gradeToSign(toSign), _gradeToExec(toExec)
 {
+	_name = name;
 	if (_gradeToSign < 1 || _gradeToExec < 1)
 		throw GradeTooHighException();
 	else if (_gradeToSign > 150 || _gradeToExec > 150)
@@ -62,7 +66,7 @@ std::ostream	&operator<<(std::ostream &o, AForm const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-std::string	AForm::getName() const
+std::string	AForm::getName()
 {
 	return (_name);
 }
