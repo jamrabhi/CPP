@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:56:05 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/04 22:34:40 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:23:17 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Form
 {
 	public:
 		Form();
-		Form(std::string name, int toSign, int toExec);
+		Form(std::string const name, int const toSign, int const toExec);
 		Form(Form const &src);
 		~Form();
 

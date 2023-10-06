@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:16:04 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/04 21:50:24 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:19:46 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Bureaucrat
 {
 	public:
 		Bureaucrat();
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat(std::string const name, int grade);
 		Bureaucrat(Bureaucrat const &src);
 		~Bureaucrat();
 

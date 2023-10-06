@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:16:01 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/04 22:26:27 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:26:45 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ Bureaucrat::Bureaucrat() : _name("Random"), _grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
 {
-	if (grade < 1)
+	if (_grade < 1)
 		throw GradeTooHighException();
-	else if (grade > 150)
+	else if (_grade > 150)
 		throw GradeTooLowException();
-	_grade = grade;
 }
+
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {

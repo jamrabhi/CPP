@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:56:08 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/04 22:43:54 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:23:28 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Form::Form() : _name("Random"), _signed(false), _gradeToSign(150), _gradeToExec(
 {
 }
 
-Form::Form(std::string name, int toSign, int toExec) : _name(name), _signed(false),
+Form::Form(std::string const name, int const toSign, int const toExec) : _name(name), _signed(false),
 		_gradeToSign(toSign), _gradeToExec(toExec)
 {
 	if (_gradeToSign < 1 || _gradeToExec < 1)
