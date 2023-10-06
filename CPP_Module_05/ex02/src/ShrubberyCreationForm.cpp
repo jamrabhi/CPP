@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:07 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/05 18:50:41 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:50:07 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* 							CONSTRUCTORS / DESTRUCTORS						  */
 /* ************************************************************************** */
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : 
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
 	AForm(target, 145,137)
 {
 }
@@ -24,7 +24,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) :
 	AForm(src.getName(), 145, 137)
 {
-	// *this = src;
+	*this = src;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -47,4 +47,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
+{
+	(void)executor;
+}

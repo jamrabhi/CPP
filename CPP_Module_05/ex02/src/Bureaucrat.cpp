@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:16:01 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/05 17:39:25 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:51:33 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ Bureaucrat::Bureaucrat() : _name("Random"), _grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
 		throw GradeTooLowException();
-	_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
@@ -106,4 +105,9 @@ void		Bureaucrat::signForm(AForm &fm)
 		std::cerr << getName() << " couldn't sign " << fm.getName() << " because "
 		<< e.what() << "." << std::endl;
 	}
+}
+
+void		Bureaucrat::executeForm(AForm const &form)
+{
+	(void)form;
 }

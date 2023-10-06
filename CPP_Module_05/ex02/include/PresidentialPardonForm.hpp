@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:04 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/05 17:55:04 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:50:35 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 
 # include <iostream>
 # include <string>
+# include "AForm.hpp"
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public AForm
 {
 	public:
-		PresidentialPardonForm();
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(PresidentialPardonForm const &src);
 		~PresidentialPardonForm();
 
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &rhs);
+
+		virtual void	execute(Bureaucrat const &executor);
 
 	private:
 		
