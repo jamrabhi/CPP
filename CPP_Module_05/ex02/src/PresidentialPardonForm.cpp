@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:13 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/06 03:50:21 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 23:52:12 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-void	PresidentialPardonForm::execute(Bureaucrat const &executor)
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	(void)executor;
-}
+	if (getIsSigned() != true)
+		throw FormNotSigned();
+	if (executor.getGrade() > getToExec())
+		throw GradeTooLowException();
 
+	std::cout << getName() << " has been pardoned by Zaphod Beeblebrox !"
+	<< std::endl;
+}

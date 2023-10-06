@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:04 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/06 03:50:35 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:09:27 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PresidentialPardonForm : public AForm
 
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &rhs);
 
-		virtual void	execute(Bureaucrat const &executor);
+		virtual void	execute(Bureaucrat const &executor) const;
 
 	private:
 		

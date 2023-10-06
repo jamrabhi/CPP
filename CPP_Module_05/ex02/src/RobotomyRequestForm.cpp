@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:10 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/06 03:50:16 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/06 23:45:12 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,23 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-void	RobotomyRequestForm::execute(Bureaucrat const &executor)
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	(void)executor;
-}
+	if (getIsSigned() != true)
+		throw FormNotSigned();
+	if (executor.getGrade() > getToExec())
+		throw GradeTooLowException();
 
+	std::srand(std::time(0));
+	int randomValue = std::rand();
+	if (randomValue < RAND_MAX / 2)
+	{
+		std::cout << "DRDRDRDRRDDRDRDRDRDRRRDRD" << std::endl;
+		std::cout << getName() << " has been robotomized !" << std::endl;
+	}
+	else
+	{
+		std::cout << "Robotomy " << getName() << " failed to robotomize " <<
+		getName() << " !" << std::endl;
+	}
+}
