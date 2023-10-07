@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:04 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/07 02:35:26 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 21:09:03 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ class PresidentialPardonForm : public AForm
 
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &rhs);
 
+		std::string		getTarget() const;
 		virtual void	execute(Bureaucrat const &executor) const;
 
 	private:
-		
+		std::string const	_target;
 };
 
 #endif

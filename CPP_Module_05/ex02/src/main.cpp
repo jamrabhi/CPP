@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:16:19 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/06 23:52:57 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 22:00:31 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,30 @@ int	main()
 
 	ShrubberyCreationForm shrub("Shrub_target");
 	std::cout << shrub << std::endl;
-	noob.signForm(shrub);
+	boss.signForm(shrub);
 	try
 	{
 		shrub.execute(noob);
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Error : " << noob.getName() << " couldn't execute form because " 
-		<< shrub.getName() << e.what() << '\n';
+		std::cerr << "Error : " << noob.getName() << " couldn't execute form " 
+		<< shrub.getName() << " because " << e.what() << std::endl;
 	}
-	noob.executeForm(shrub);
-	boss.signForm(shrub);
 	boss.executeForm(shrub);
 
 	std::cout << std::endl;
 
 	RobotomyRequestForm robotomy("Robotomy_target");
-	noob.signForm(robotomy);
-	noob.executeForm(robotomy);
 	boss.signForm(robotomy);
+	noob.executeForm(robotomy);
 	boss.executeForm(robotomy);
 
 	std::cout << std::endl;
 
 	PresidentialPardonForm president("President_target");
-	noob.signForm(president);
-	noob.executeForm(president);
 	boss.signForm(president);
+	noob.executeForm(president);
 	boss.executeForm(president);
 	
 	return (0);

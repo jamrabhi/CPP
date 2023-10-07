@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:07 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/07 03:08:32 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 21:47:12 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 /* ************************************************************************** */
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
-	AForm(target, 145,137)
+	AForm("Shrubbery Creation", 145,137), _target(target)
 {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) :
-	AForm(src)
+	AForm(src), _target(src.getTarget())
 {
 }
 
@@ -46,14 +46,19 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
+std::string	ShrubberyCreationForm::getTarget() const
+{
+	return (_target);
+}
+
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (getIsSigned() != true)
 		throw FormNotSignedException();
 	if (executor.getGrade() > getToExec())
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 
-	std::string outfile_name = getName() + "_shrubbery";
+	std::string outfile_name = getTarget() + "_shrubbery";
 	std::ofstream outfile(outfile_name.c_str());
 
 	if (!outfile.is_open())
