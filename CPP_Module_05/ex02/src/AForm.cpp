@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:56:08 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/07 02:37:01 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:16:16 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ AForm::AForm(std::string const name, int toSign, int toExec) : _name(name), _sig
 }
 
 
-AForm::AForm(AForm const &src) : _gradeToSign(src._gradeToSign), _gradeToExec(src._gradeToExec)
+AForm::AForm(AForm const &src) : _name(src.getName()), _signed(src.getIsSigned()),
+	_gradeToSign(src.getToSign()), _gradeToExec(src.getToExec())
 {
-	*this = src;
 }
 
 AForm::~AForm()

@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:13 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/07 02:37:01 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:09:05 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target) :
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) :
-	AForm(src.getName(), 25, 5)
+	AForm(src)
 {
-	*this = src;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
