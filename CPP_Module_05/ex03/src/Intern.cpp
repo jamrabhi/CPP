@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 03:43:47 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/07 04:03:58 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:40:31 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,29 @@ Intern	&Intern::operator=(Intern const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-void	Intern::makeForm(std::string formName, std::string target)
+AForm	*Intern::createRobotomy(std::string target)
 {
-	// void (Intern::*pointerToFunc[3])(void) =
-	// {
-	// 	&RobotomyRequestForm::RobotomyRequestForm(target),
-	// 	&ShrubberyCreationForm::ShrubberyCreationForm(target),
-	// 	&PresidentialPardonForm::PresidentialPardonForm(target)
-	// };
+	return (new RobotomyRequestForm(target));
+}
+
+AForm	*Intern::createShrubbery(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm	*Intern::createPresidential(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+AForm	*Intern::makeForm(std::string formName, std::string target)
+{
+	AForm* (Intern::*pointerToFunc[3])(std::string) =
+	{
+		&Intern::createRobotomy,
+		&Intern::createShrubbery,
+		&Intern::createPresidential
+	};
 
 	std::string	forms[3] = 
 	{	"robotomy request",
@@ -63,6 +78,11 @@ void	Intern::makeForm(std::string formName, std::string target)
 	for (int i = 0; i < 3; i++)
 	{
 		if (forms[i] == formName)
-			(this->*pointerToFunc[i])();
+		{
+			std::cout << "Intern creates " << formName << " form" << std::endl;
+			return (this->*pointerToFunc[i])(target);
+		}
 	}
+	std::cerr << "Error : form \"" << formName << "\" not recognized" << std::endl;
+	return (NULL);
 }
