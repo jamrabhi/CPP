@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:16:19 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/04 22:47:03 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 22:56:46 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,6 @@ int	main()
 	try
 	{
 		formulaire.beSigned(manu);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "Error : " << e.what() << std::endl;
-	}
-
-	try
-	{
-		formulaire.beSigned(mike);
 	}
 	catch(const std::exception& e)
 	{

@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:16:19 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/07 22:00:31 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 22:58:33 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main()
 	std::cout << boss << std::endl << noob << std::endl << std::endl;
 
 	ShrubberyCreationForm shrub("Shrub_target");
-	std::cout << shrub << std::endl;
+	std::cout << shrub << std::endl << std::endl;
+
 	boss.signForm(shrub);
 	try
 	{
