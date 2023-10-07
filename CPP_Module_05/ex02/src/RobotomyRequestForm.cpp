@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:10 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/06 23:45:12 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 02:37:01 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (getIsSigned() != true)
-		throw FormNotSigned();
+		throw FormNotSignedException();
 	if (executor.getGrade() > getToExec())
 		throw GradeTooLowException();
 

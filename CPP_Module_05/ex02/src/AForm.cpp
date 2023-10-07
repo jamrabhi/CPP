@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:56:08 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/06 23:38:06 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 02:37:01 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ const char*	AForm::GradeTooLowException::what() const throw()
 	return ("grade is too low !");
 }
 
-const char*	AForm::FormNotSigned::what() const throw()
+const char*	AForm::FormNotSignedException::what() const throw()
 {
 	return (" is not signed !");
 }

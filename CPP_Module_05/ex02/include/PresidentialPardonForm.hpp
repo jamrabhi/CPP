@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:04 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/06 20:09:27 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 02:35:26 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class PresidentialPardonForm : public AForm
 	public:
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(PresidentialPardonForm const &src);
-		~PresidentialPardonForm();
+		virtual ~PresidentialPardonForm();
 
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &rhs);
 
