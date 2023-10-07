@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:55:13 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/07 03:09:05 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/07 21:47:30 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 /* ************************************************************************** */
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const target) :
-	AForm(target, 25, 5)
+	AForm("Presidential Pardon", 25, 5), _target(target)
 {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) :
-	AForm(src)
+	AForm(src), _target(src.getTarget())
 {
 }
 
@@ -46,13 +46,18 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
+std::string	PresidentialPardonForm::getTarget() const
+{
+	return (_target);
+}
+
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	if (getIsSigned() != true)
 		throw FormNotSignedException();
 	if (executor.getGrade() > getToExec())
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 
-	std::cout << getName() << " has been pardoned by Zaphod Beeblebrox !"
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox !"
 	<< std::endl;
 }
