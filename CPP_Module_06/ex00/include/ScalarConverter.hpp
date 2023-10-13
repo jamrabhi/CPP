@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:57:35 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/10 21:06:04 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/14 00:18:43 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <iostream>
 # include <string>
+# include <sstream>
+# include <iomanip>
+# include <cmath>
+# include <limits>
 
 class ScalarConverter
 {
@@ -22,6 +26,12 @@ class ScalarConverter
 		~ScalarConverter();
 
 		ScalarConverter	&operator=(ScalarConverter const &rhs);
+
+		class ConversionException : public std::exception
+		{
+			public:
+				virtual const char*	what() const throw();
+		};
 
 		static void	convert(std::string str);
 
