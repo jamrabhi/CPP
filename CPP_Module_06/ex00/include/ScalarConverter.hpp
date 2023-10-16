@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:57:35 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/10/14 00:18:43 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:03:13 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class ScalarConverter
 	public:
 		~ScalarConverter();
 
-		ScalarConverter	&operator=(ScalarConverter const &rhs);
-
 		class ConversionException : public std::exception
 		{
 			public:
@@ -38,6 +36,7 @@ class ScalarConverter
 	private:
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const &src);
+		ScalarConverter	&operator=(ScalarConverter const &rhs);
 		const std::string	_str;
 };
 
