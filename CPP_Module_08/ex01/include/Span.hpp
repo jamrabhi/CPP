@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:58:07 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/01/22 21:28:04 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:28:02 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <vector>
 # include <stdexcept>
 # include <algorithm>
+# include <cstdlib>
+# include <ctime>
 
 class Span
 {
@@ -33,10 +35,10 @@ class Span
 
 		int		shortestSpan();
 		int		longestSpan();
-		std::vector<int>	_data;
 
 	private:
 		unsigned int		_n;
+		std::vector<int>	_data;
 };
 
 #endif

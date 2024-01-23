@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:58:04 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/01/22 21:43:57 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:44:00 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ void	Span::addNumber(int n)
 
 void	Span::addNumbers(std::vector<int>::iterator it_begin, std::vector<int>::iterator it_end)
 {
-	if (_data.size() >= _n || (it_end - it_begin) >= _n)
-		throw std::length_error("Cannot add range of iterators, container is full");
+	if (_data.size() >= _n)
+		throw std::length_error("Container is full");
+
+	if ((it_end - it_begin + _data.size()) > _n)
+		throw std::length_error("Range of iterators is too big for the container");
+		
 	
 	_data.insert(_data.end(), it_begin, it_end);
 }
