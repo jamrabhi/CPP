@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:58:04 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/01/23 18:44:00 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/01/25 21:50:26 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ Span	&Span::operator=(Span const &rhs)
 {
 	if (this != &rhs)
 	{
+		_n = rhs._n;
+		_data = rhs._data;
 	}
 	return (*this);
 }
