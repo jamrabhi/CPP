@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MySed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jamrabhi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 04:17:06 by jamrabhi          #+#    #+#             */
-/*   Updated: 2023/07/05 04:17:07 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:56:09 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ int	MySed::replace()
 		std::cerr << "Error : couldn't save .replace file" << std::endl;
 		return (1);
 	}
-	while(std::getline(infile, line))
-	{
-		for (size_t found = line.find(_s1); found != std::string::npos;
-				found = line.find(_s1, found))
-		{
-			line.erase(found, _s1.length());
-			line.insert(found, _s2);
-		}
-		outfile << line << std::endl;
-	}
+	while(std::getline(infile, line))									//
+	{																	//
+		for (size_t found = line.find(_s1); found != std::string::npos;	//
+				found = line.find(_s1, found))							// Not working properly !!
+		{																// Infinite loop to fix
+			line.erase(found, _s1.length());							// in the case where s1 and s2 are identical
+			line.insert(found, _s2);									// ./mySed test "Sed" "Sed"
+		}																//
+		outfile << line << std::endl;									//
+	}																	//
 	outfile.close();
 	infile.close();
 	return (0);
