@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:27 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/04 22:59:12 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/08 21:14:49 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,15 @@ int	main(int ac, char *av[])
 {
 	if (ac == 2)
 	{
-		(av[1]) = 0;
+		try
+		{
+			BitcoinExchange	btc("data/data.csv", av[1]);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+		
 	}
 	else
 	{
