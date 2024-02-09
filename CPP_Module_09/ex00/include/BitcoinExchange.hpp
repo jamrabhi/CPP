@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:33:54 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/08 21:27:47 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/09 21:35:45 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <fstream>
 # include <stdexcept>
 # include <map>
+# include <locale>
+# include <cstdlib>
 
 class BitcoinExchange
 {
@@ -30,6 +32,7 @@ class BitcoinExchange
 		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
 
 		void	parseDatabase();
+		void	parseInput();
 
 	private:
 		std::ifstream	_database;
