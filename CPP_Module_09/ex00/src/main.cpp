@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:27 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/08 21:14:49 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/12 22:30:10 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	main(int ac, char *av[])
 		catch(const std::exception& e)
 		{
 			std::cerr << "Error: " << e.what() << std::endl;
+			return (1);
 		}
-		
 	}
 	else
 	{
-		std::cerr << "Usage : ./btc data.csv" << std::endl;
+		std::cerr << "Error: could not open file." << std::endl;
 		return (1);
 	}
 	return (0);

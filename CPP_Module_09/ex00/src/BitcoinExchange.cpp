@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/09 23:14:20 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/12 22:30:34 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ BitcoinExchange::BitcoinExchange(std::string database, std::string fileInput) :
 {
 	if (!_database.is_open())
 	{
-		throw std::runtime_error("Couldn't open CSV database.");
+		throw std::runtime_error("could not open CSV database.");
 	}
 	if (!_fileInput.is_open())
 	{
-		throw std::runtime_error("Couldn't open file.");
+		_database.close();
+		_dataMap.clear();
+		throw std::runtime_error("could not open file.");
 	}
 	parseDatabase();
 	parseInput();
@@ -38,8 +40,9 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &src)
 
 BitcoinExchange::~BitcoinExchange()
 {
-	// _database.close();
-	// _fileInput.close();
+	_database.close();
+	_fileInput.close();
+	_dataMap.clear();
 }
 
 /* ************************************************************************** */
@@ -50,6 +53,7 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs)
 {
 	if (this != &rhs)
 	{
+		this->_dataMap = rhs._dataMap;
 	}
 	return (*this);
 }
@@ -57,7 +61,6 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs)
 /* ************************************************************************** */
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
-
 
 void	BitcoinExchange::parseDatabase()
 {
@@ -78,15 +81,59 @@ void	BitcoinExchange::parseDatabase()
 	}
 }
 
-void	checkValue(float value)
+void	BitcoinExchange::parseInput()
 {
-	if (value < 0)
-		throw std::runtime_error("not a positive number.");
-	if (value > 1000)
-		throw std::runtime_error("too large a number.");
+	std::string	line;
+	int			nb_line = 0;
+
+	while (std::getline(_fileInput, line))
+	{
+		if (nb_line == 0)
+		{	
+			if (line != "date | value")
+				throw std::runtime_error("incorrect file format");
+		}
+		else try
+		{
+			checkInput(line);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+		nb_line++;
+	}
 }
 
-void	checkDate(std::string date)
+void	BitcoinExchange::checkInput(std::string line)
+{
+	std::string	date;
+	float		value;
+	size_t		i = 0;
+	std::map<std::string, float>::iterator it_nearestDate;
+	
+	if (line.length() < 14)
+		throw std::runtime_error("bad input => " + line);
+	
+	i = line.find('|');
+	if (i == std::string::npos || i != 11 || line[10] != ' ' || line[12] != ' ')
+		throw std::runtime_error("bad input => " + line);
+	
+	date = line.substr(0, i - 1);
+	checkDate(date);
+	
+	value = atof(line.substr(13).c_str());
+	checkValue(value);
+
+	it_nearestDate = _dataMap.upper_bound(date);
+	if (it_nearestDate->first != date && it_nearestDate != _dataMap.begin())
+		--it_nearestDate;
+	
+	std::cout << date << " => " << value << " = " << (it_nearestDate->second * value)
+		<< std::endl;
+}
+
+void	BitcoinExchange::checkDate(std::string date)
 {
 	unsigned int	year;
 	unsigned int	month;
@@ -105,43 +152,10 @@ void	checkDate(std::string date)
 		throw std::runtime_error("incorrect date => " + date);
 }
 
-void	checkInput(std::string line)
+void	BitcoinExchange::checkValue(float value)
 {
-	std::string	date;
-	float		value;
-	size_t		i = 0;
-	
-	if (line.length() < 14)
-		throw std::runtime_error("bad input => " + line);
-	
-	i = line.find('|');
-	if (i == std::string::npos || i != 11 || line[10] != ' ' || line[12] != ' ')
-		throw std::runtime_error("bad input => " + line);
-	
-	date = line.substr(0, i - 1);
-	checkDate(date);
-	
-	value = atof(line.substr(13).c_str());
-	checkValue(value);
-
-	std::cout << date << " => " << value << " = " << std::endl;
-}
-
-void	BitcoinExchange::parseInput()
-{
-	std::string	line;
-
-	std::getline(_fileInput, line);
-	//check segf
-	while (std::getline(_fileInput, line))
-	{
-		try
-		{
-			checkInput(line);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << "Error: " << e.what() << std::endl;
-		}
-	}
+	if (value < 0)
+		throw std::runtime_error("not a positive number.");
+	if (value > 1000)
+		throw std::runtime_error("too large a number.");
 }

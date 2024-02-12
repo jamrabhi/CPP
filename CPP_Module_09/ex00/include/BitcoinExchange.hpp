@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:33:54 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/09 21:35:45 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/12 22:16:27 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,13 @@ class BitcoinExchange
 
 		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
 
+	private:
 		void	parseDatabase();
 		void	parseInput();
-
-	private:
+		void	checkInput(std::string line);
+		void	checkValue(float value);
+		void	checkDate(std::string date);
+		
 		std::ifstream	_database;
 		std::ifstream	_fileInput;
 		std::map<std::string, float> _dataMap;
