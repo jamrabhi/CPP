@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/12 22:30:34 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:20:35 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ BitcoinExchange::~BitcoinExchange()
 {
 	_database.close();
 	_fileInput.close();
-	_dataMap.clear();
 }
 
 /* ************************************************************************** */
