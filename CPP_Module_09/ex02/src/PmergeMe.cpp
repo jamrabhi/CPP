@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/16 21:35:07 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:12:56 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,49 @@ void	PmergeMe::parseSequence(int ac, char *av[])
 	{
 		num = av[i];
 		checkDigit(num);
-		_vec_seq.push_back(atoi(num.c_str()));
+		_sequence.push_back(atoi(num.c_str()));
 	}
 	merge_insert();
 }
 
+void	recursort(std::vector<std::pair<int, int> > sequence)
+{
+	
+}
+
 void	PmergeMe::merge_insert()
 {
-	for (size_t i = 0; i <= (_vec_seq.size() / 2); ++i)
+	std::cout << "Original sequence :" << std::endl;
+	for (size_t i = 0; i < _sequence.size(); ++i)
+		std::cout << _sequence[i] << " ";
+	std::cout << std::endl;
+	
+	std::vector<std::pair<int, int> > vec_seq;
+	for (size_t i = 1; i < _sequence.size(); i += 2)
 	{
-		
+		vec_seq.push_back(std::make_pair(_sequence[i-1], _sequence[i]));
 	}
+	if (_sequence.size() % 2 == 1)
+		vec_seq.push_back(std::make_pair(0, _sequence[_sequence.size() - 1]));
+		
+	std::cout << "Vector with pairs :" << std::endl;
+	for (size_t i = 0; i < vec_seq.size(); i++)
+	{
+		std::cout << vec_seq[i].first << " " << vec_seq[i].second << std::endl;
+	}
+	
+	std::cout << "Sorting pairs :" << std::endl;
+	for (size_t i = 0; i < vec_seq.size(); i++)
+	{
+		if (vec_seq[i].first < vec_seq[i].second)
+			std::swap(vec_seq[i].first, vec_seq[i].second);
+	}
+	for (size_t i = 0; i < vec_seq.size(); i++)
+	{
+		std::cout << vec_seq[i].first << " " << vec_seq[i].second << std::endl;
+	}
+	
+	
 }
 
 

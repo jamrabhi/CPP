@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:43 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/16 21:32:55 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:22:56 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdexcept>
 # include <cstdlib>
 # include <vector>
+// # include <utility>
 
 class PmergeMe
 {
@@ -32,7 +33,7 @@ class PmergeMe
 		void	merge_insert();
 
 	private:
-		std::vector<int>	_vec_seq;
+		std::vector<int>	_sequence;
 		// char **_sequence;
 };
 
