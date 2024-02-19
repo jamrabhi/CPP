@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:43 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/18 21:22:56 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/19 21:54:54 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <cstdlib>
 # include <vector>
 // # include <utility>
+# include <algorithm>
 
 class PmergeMe
 {
