@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/19 22:41:58 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:44:14 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,32 +70,19 @@ void	PmergeMe::parseSequence(int ac, char *av[])
 	merge_insert();
 }
 
-void	merge(std::vector<std::pair<int, int> > &sequence, int start, int end)
+void	merge(std::vector<std::pair<int, int> > &seq, int start, int mid, int end)
 {
-	for (int i = start + 1; i < end; i++)
-	{
-		if (sequence[i].first < sequence[i - 1].first)
-		{
-			// std::cout << "i = " << sequence[i].first << " < i+1 = " << sequence[i + 1].first << std::endl;
-			std::swap(sequence[i], sequence[i-1]);
-		}
-	}
-	// std::cout << "MERGE :" << std::endl;
-	// for (size_t i = 0; i < sequence.size(); i++)
-	// {
-	// 	std::cout << sequence[i].first << "\t" << sequence[i].second << std::endl;
-	// }
+	
 }
 
-void	recurSort(std::vector<std::pair<int, int> > &sequence, int start, int end)
+void	mergeSort(std::vector<std::pair<int, int> > &seq, int start, int end)
 {
-	int mid = (start + end) / 2;
 	if (start < end)
 	{
-		std::cout << start << mid << end << std::endl;
-		recurSort(sequence, start, mid);
-		recurSort(sequence, mid + 1, end);
-		merge(sequence, start, end);
+		int	mid = (start + end) / 2;
+		mergeSort(seq, start, mid);
+		mergeSort(seq, mid + 1, end);
+		merge(seq, start, mid, end);
 	}
 }
 
@@ -105,6 +92,9 @@ void	PmergeMe::merge_insert()
 	for (size_t i = 0; i < _sequence.size(); ++i)
 		std::cout << _sequence[i] << " ";
 	std::cout << std::endl;
+	
+	// 1.	Group the elements of X into [n/2] pairs of elements, arbitrarily,
+	// leaving one element unpaired if there is an odd number of elements.
 	
 	std::vector<std::pair<int, int> > vec_seq;
 	for (size_t i = 1; i < _sequence.size(); i += 2)
@@ -120,6 +110,9 @@ void	PmergeMe::merge_insert()
 		std::cout << vec_seq[i].first << "\t" << vec_seq[i].second << std::endl;
 	}
 	
+	// 2.	Perform [n/2] comparisons, one per pair,
+	// to determine the larger of the two elements in each pair.
+	
 	std::cout << "Sorting pairs :" << std::endl;
 	for (size_t i = 0; i < vec_seq.size(); i++)
 	{
@@ -131,14 +124,14 @@ void	PmergeMe::merge_insert()
 		std::cout << vec_seq[i].first << "\t" << vec_seq[i].second << std::endl;
 	}
 	
-	recurSort(vec_seq, 0, vec_seq.size());
-
-	std::cout << "After recurSort :" << std::endl;
+	// 3.	Recursively sort the [n/2] larger elements from each pair,
+	// creating a sorted sequence S of [n/2] of the input elements, in ascending order.
+	std::cout << "Recursively sort pairs :" << std::endl;
+	mergeSort(vec_seq, 0, vec_seq.size());
 	for (size_t i = 0; i < vec_seq.size(); i++)
 	{
 		std::cout << vec_seq[i].first << "\t" << vec_seq[i].second << std::endl;
 	}
-	
 }
 
 
