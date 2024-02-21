@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/20 21:44:14 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:42:45 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,37 @@ void	PmergeMe::parseSequence(int ac, char *av[])
 
 void	merge(std::vector<std::pair<int, int> > &seq, int start, int mid, int end)
 {
+	int	leftVecSize = mid - start + 1;
+	int	rightVecSize = end - mid;
+
+	std::vector<std::pair<int, int> >	leftVec(leftVecSize);
+	std::vector<std::pair<int, int> >	rightVec(rightVecSize);
+
+	for (int i = 0; i < leftVecSize; i++)
+		leftVec[i] = seq[start + i];
+	for (int i = 0; i < rightVecSize; i++)
+		rightVec[i] = seq[mid + i + 1];
 	
+	int i = 0, j = 0, k = start;
+	for (; i < leftVecSize && j < rightVecSize; ++k)
+	{
+		if (leftVec[i].first < rightVec[j].first)
+		{
+			seq[k] = leftVec[i];
+			++i;
+		}
+		else
+		{
+			seq[k] = rightVec[j];
+			++j;
+		}
+	}
+	
+	for (; i < leftVecSize; ++i, ++k)
+		seq[k] = leftVec[i];
+
+	for (; j < rightVecSize; ++j, ++k)
+		seq[k] = rightVec[j];	
 }
 
 void	mergeSort(std::vector<std::pair<int, int> > &seq, int start, int end)
@@ -93,27 +123,26 @@ void	PmergeMe::merge_insert()
 		std::cout << _sequence[i] << " ";
 	std::cout << std::endl;
 	
-	// 1.	Group the elements of X into [n/2] pairs of elements, arbitrarily,
-	// leaving one element unpaired if there is an odd number of elements.
-	
+	//	1.	Group the elements of X into [n/2] pairs of elements, arbitrarily,
+	//		leaving one element unpaired if there is an odd number of elements.
 	std::vector<std::pair<int, int> > vec_seq;
 	for (size_t i = 1; i < _sequence.size(); i += 2)
 	{
 		vec_seq.push_back(std::make_pair(_sequence[i-1], _sequence[i]));
 	}
+	int	lastElem = 0;
 	if (_sequence.size() % 2 == 1)
-		vec_seq.push_back(std::make_pair(0, _sequence[_sequence.size() - 1]));
+		lastElem = *(_sequence.end() - 1);
 		
-	std::cout << "Vector with pairs :" << std::endl;
+	std::cout << "\t\t1. Vector with pairs :" << std::endl;
 	for (size_t i = 0; i < vec_seq.size(); i++)
 	{
 		std::cout << vec_seq[i].first << "\t" << vec_seq[i].second << std::endl;
 	}
 	
 	// 2.	Perform [n/2] comparisons, one per pair,
-	// to determine the larger of the two elements in each pair.
-	
-	std::cout << "Sorting pairs :" << std::endl;
+	// 		to determine the larger of the two elements in each pair.
+	std::cout << "\t\t2. Sorting pairs :" << std::endl;
 	for (size_t i = 0; i < vec_seq.size(); i++)
 	{
 		if (vec_seq[i].first < vec_seq[i].second)
@@ -125,13 +154,63 @@ void	PmergeMe::merge_insert()
 	}
 	
 	// 3.	Recursively sort the [n/2] larger elements from each pair,
-	// creating a sorted sequence S of [n/2] of the input elements, in ascending order.
-	std::cout << "Recursively sort pairs :" << std::endl;
-	mergeSort(vec_seq, 0, vec_seq.size());
+	// 		creating a sorted sequence S of [n/2] of the input elements,
+	//		in ascending order.
+	std::cout << "\t\t3. Recursively sort pairs :" << std::endl;
+	mergeSort(vec_seq, 0, vec_seq.size() - 1);
 	for (size_t i = 0; i < vec_seq.size(); i++)
 	{
 		std::cout << vec_seq[i].first << "\t" << vec_seq[i].second << std::endl;
 	}
-}
+	std::vector<int> sortedSeq;
+	for (size_t i = 0; i < vec_seq.size(); i++)
+	{
+		sortedSeq.push_back(vec_seq[i].first);
+	}
+	std::vector<int> unsortedSeq;
+	for (size_t i = 0; i < vec_seq.size(); i++)
+	{
+		unsortedSeq.push_back(vec_seq[i].second);
+	}
+	if (lastElem)
+		unsortedSeq.push_back(lastElem);
+	
+	std::cout << "Sorted sequence : [ ";
+	for (size_t i = 0; i < sortedSeq.size(); i++)
+	{
+		std::cout << sortedSeq[i] << " ";
+	}
+	std::cout << "] - Unsorted sequence : [ ";
+	for (size_t i = 0; i < unsortedSeq.size(); i++)
+	{
+		std::cout << unsortedSeq[i] << " ";
+	}
+	std::cout << "]" << std::endl;
+	
+	// 4.	Insert at the start of S the element that was paired with the first
+	// 		and smallest element of S.
+	std::cout << "\t\t4.Inserting the first unsorted element :" << std::endl;
+	sortedSeq.insert(sortedSeq.begin(), *(unsortedSeq.begin()));
+	unsortedSeq.erase(unsortedSeq.begin());
+	
+	std::cout << "Sorted sequence : [ ";
+	for (size_t i = 0; i < sortedSeq.size(); i++)
+	{
+		std::cout << sortedSeq[i] << " ";
+	}
+	std::cout << "] - Unsorted sequence : [ ";
+	for (size_t i = 0; i < unsortedSeq.size(); i++)
+	{
+		std::cout << unsortedSeq[i] << " ";
+	}
+	std::cout << "]" << std::endl;
 
+	// 5.	Insert the remaining [n/2] - 1 elements of X \ S into S,
+	//		one at a time, with a specially chosen insertion ordering described
+	// 		below. Use binary search in subsequences of S (as described below)
+	// 		to determine the position at which each element should be inserted.
+	// 		Source : https://en.wikipedia.org/wiki/Merge-insertion_sort
+	
+	
+}
 
