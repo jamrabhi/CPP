@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/21 22:42:45 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/22 22:50:53 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ PmergeMe	&PmergeMe::operator=(PmergeMe const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
+int		jacobsthal(int n)
+{
+	if (n == 0)
+		return (0);
+	else if (n == 1)
+		return (1);
+	else
+		return (jacobsthal(n - 1) + 2 * jacobsthal(n - 2));
+}
+
 void	checkDigit(std::string num)
 {
 	for (size_t i = 0; i < num.length(); ++i)
@@ -68,6 +78,26 @@ void	PmergeMe::parseSequence(int ac, char *av[])
 		_sequence.push_back(atoi(num.c_str()));
 	}
 	merge_insert();
+}
+
+void	insertionSort(std::vector<int> &sortedSeq, std::vector<int> &unsortedSeq)
+{
+	for (size_t i = 3; i < unsortedSeq.size(); i++)
+	{
+		size_t jacob_index = jacobsthal(i);
+		(void)sortedSeq;
+		(void)unsortedSeq;
+		(void)jacob_index;
+		std::cout <<  "jacob_index = " << jacob_index << std::endl;
+		size_t jacob_prev = jacobsthal(i - 1);
+			std::cout << "jacob_prev = " << jacob_prev << " jacob_index = " << jacob_index << " unsortedSeq.size() = "<< unsortedSeq.size()<<  std::endl;
+		for (size_t index = jacob_index; index > jacob_prev && jacob_prev < unsortedSeq.size(); index--)
+		{
+			// std::cout << "jacob_prev = " << jacob_prev << " jacob_index = " << jacob_index << " index = " << index << std::endl;
+			std::cout << unsortedSeq[index - 1] << " " ;
+		}
+		std::cout << std::endl;
+	}
 }
 
 void	merge(std::vector<std::pair<int, int> > &seq, int start, int mid, int end)
@@ -191,7 +221,7 @@ void	PmergeMe::merge_insert()
 	// 		and smallest element of S.
 	std::cout << "\t\t4.Inserting the first unsorted element :" << std::endl;
 	sortedSeq.insert(sortedSeq.begin(), *(unsortedSeq.begin()));
-	unsortedSeq.erase(unsortedSeq.begin());
+	// unsortedSeq.erase(unsortedSeq.begin());
 	
 	std::cout << "Sorted sequence : [ ";
 	for (size_t i = 0; i < sortedSeq.size(); i++)
@@ -210,6 +240,8 @@ void	PmergeMe::merge_insert()
 	// 		below. Use binary search in subsequences of S (as described below)
 	// 		to determine the position at which each element should be inserted.
 	// 		Source : https://en.wikipedia.org/wiki/Merge-insertion_sort
+
+	insertionSort(sortedSeq, unsortedSeq);
 	
 	
 }
