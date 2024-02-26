@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/22 22:50:53 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:06:19 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ PmergeMe	&PmergeMe::operator=(PmergeMe const &rhs)
 /* 								MEMBER FUNCTIONS							  */
 /* ************************************************************************** */
 
-int		jacobsthal(int n)
+size_t		jacobsthal(int n)
 {
 	if (n == 0)
 		return (0);
@@ -82,21 +82,36 @@ void	PmergeMe::parseSequence(int ac, char *av[])
 
 void	insertionSort(std::vector<int> &sortedSeq, std::vector<int> &unsortedSeq)
 {
-	for (size_t i = 3; i < unsortedSeq.size(); i++)
+	size_t i = 3;
+	for (size_t jacobIndex = jacobsthal(i); jacobsthal(i - 1) <= unsortedSeq.size(); jacobIndex = jacobsthal(++i))
 	{
-		size_t jacob_index = jacobsthal(i);
-		(void)sortedSeq;
-		(void)unsortedSeq;
-		(void)jacob_index;
-		std::cout <<  "jacob_index = " << jacob_index << std::endl;
-		size_t jacob_prev = jacobsthal(i - 1);
-			std::cout << "jacob_prev = " << jacob_prev << " jacob_index = " << jacob_index << " unsortedSeq.size() = "<< unsortedSeq.size()<<  std::endl;
-		for (size_t index = jacob_index; index > jacob_prev && jacob_prev < unsortedSeq.size(); index--)
+		(void) sortedSeq;
+		size_t prev_jacobIndex = jacobsthal(i - 1);
+		size_t index;
+		if (jacobIndex > unsortedSeq.size())
+			index = unsortedSeq.size();
+		else
+			index = jacobIndex;
+		// std::cout << "i = " << i << " prev_jacobIndex = " << prev_jacobIndex << " jacobIndex = " << jacobIndex << " unsortedSeq.size() = " << unsortedSeq.size() << " index = " << index << std::endl;
+		while (index > prev_jacobIndex)
 		{
-			// std::cout << "jacob_prev = " << jacob_prev << " jacob_index = " << jacob_index << " index = " << index << std::endl;
-			std::cout << unsortedSeq[index - 1] << " " ;
+			// std::cout << "\t\t\t\tInserting " << unsortedSeq[index - 1] << std::endl;
+			std::vector<int>::iterator insert = std::upper_bound(sortedSeq.begin(), sortedSeq.end(), unsortedSeq[index - 1]);
+			std::cout << "J = " << jacobIndex << " index = " << index <<" -  Inserting within : " << std::endl;
+			for (std::vector<int>::iterator it = sortedSeq.begin(); it <= insert; ++it)
+			{
+				std::cout << *it << " ";
+			}
+			std::cout << std::endl;
+			sortedSeq.insert(insert,unsortedSeq[index - 1]);
+			index--;
+			std::cout << "Sorted sequence : [ ";
+			for (size_t i = 0; i < sortedSeq.size(); i++)
+			{
+				std::cout << sortedSeq[i] << " ";
+			}
+			std::cout << std::endl;
 		}
-		std::cout << std::endl;
 	}
 }
 
@@ -241,8 +256,23 @@ void	PmergeMe::merge_insert()
 	// 		to determine the position at which each element should be inserted.
 	// 		Source : https://en.wikipedia.org/wiki/Merge-insertion_sort
 
+	std::cout << "\t\t5.Inserting the remaining sequence :" << std::endl;
 	insertionSort(sortedSeq, unsortedSeq);
 	
-	
+	std::cout << std::endl << std::endl;
+
+	std::cout << "Sorted sequence : [ ";
+	for (size_t i = 0; i < sortedSeq.size(); i++)
+	{
+		std::cout << sortedSeq[i] << " ";
+	}
+	std::cout << " ]" << std::endl;
+	for (size_t i = 0; i < sortedSeq.size(); ++i)
+	{
+		if (sortedSeq[i] > sortedSeq[i + 1])
+		{
+			std::cout << sortedSeq[i] << " > " << sortedSeq[i+1] << std::endl;
+		}
+	}
 }
 
