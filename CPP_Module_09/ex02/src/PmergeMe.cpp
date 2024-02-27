@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/26 23:06:19 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/27 22:39:16 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,24 +80,33 @@ void	PmergeMe::parseSequence(int ac, char *av[])
 	merge_insert();
 }
 
-void	insertionSort(std::vector<int> &sortedSeq, std::vector<int> &unsortedSeq)
+void	insertionSort(std::vector<int> &sortedSeq, std::vector<int> &unsortedSeq, std::vector<std::pair<int, int> > &pairSeq)
 {
 	size_t i = 3;
+	int	stray_nb = -1;
+	if (unsortedSeq.size() == sortedSeq.size())	// Check if odd number of elements
+	{
+		stray_nb = *(unsortedSeq.end()-1);
+	}
 	for (size_t jacobIndex = jacobsthal(i); jacobsthal(i - 1) <= unsortedSeq.size(); jacobIndex = jacobsthal(++i))
 	{
-		(void) sortedSeq;
 		size_t prev_jacobIndex = jacobsthal(i - 1);
 		size_t index;
 		if (jacobIndex > unsortedSeq.size())
 			index = unsortedSeq.size();
 		else
 			index = jacobIndex;
-		// std::cout << "i = " << i << " prev_jacobIndex = " << prev_jacobIndex << " jacobIndex = " << jacobIndex << " unsortedSeq.size() = " << unsortedSeq.size() << " index = " << index << std::endl;
 		while (index > prev_jacobIndex)
 		{
-			// std::cout << "\t\t\t\tInserting " << unsortedSeq[index - 1] << std::endl;
-			std::vector<int>::iterator insert = std::upper_bound(sortedSeq.begin(), sortedSeq.end(), unsortedSeq[index - 1]);
-			std::cout << "J = " << jacobIndex << " index = " << index <<" -  Inserting within : " << std::endl;
+			std::vector<int>::iterator	it_target;
+			if (unsortedSeq[index - 1] != stray_nb)
+				it_target = std::find(sortedSeq.begin(), sortedSeq.end(), pairSeq[index - 1].first);
+			else
+				it_target = sortedSeq.end(); // If odd element the last element is not in pairSeq
+			std::cout << "\t\t\t\tInserting " << unsortedSeq[index - 1] << std::endl;
+			std::cout << "it_target = " << *(it_target) << std::endl;
+			std::vector<int>::iterator insert = std::upper_bound(sortedSeq.begin(), it_target, unsortedSeq[index - 1]);
+			std::cout << "J = " << jacobIndex << " index = " << index <<" insert = " << *insert <<" -  Inserting within : " << std::endl;
 			for (std::vector<int>::iterator it = sortedSeq.begin(); it <= insert; ++it)
 			{
 				std::cout << *it << " ";
@@ -257,21 +266,23 @@ void	PmergeMe::merge_insert()
 	// 		Source : https://en.wikipedia.org/wiki/Merge-insertion_sort
 
 	std::cout << "\t\t5.Inserting the remaining sequence :" << std::endl;
-	insertionSort(sortedSeq, unsortedSeq);
+	insertionSort(sortedSeq, unsortedSeq, vec_seq);
 	
 	std::cout << std::endl << std::endl;
 
-	std::cout << "Sorted sequence : [ ";
+	std::cout << "Sorted sequence : ";
 	for (size_t i = 0; i < sortedSeq.size(); i++)
 	{
 		std::cout << sortedSeq[i] << " ";
 	}
-	std::cout << " ]" << std::endl;
-	for (size_t i = 0; i < sortedSeq.size(); ++i)
+	std::cout << std::endl;
+
+	std::cout << std::endl << "TEST IF SORTED :" << std::endl;
+	for (size_t i = 1; i < sortedSeq.size(); ++i)
 	{
-		if (sortedSeq[i] > sortedSeq[i + 1])
+		if (sortedSeq[i] < sortedSeq[i - 1])
 		{
-			std::cout << sortedSeq[i] << " > " << sortedSeq[i+1] << std::endl;
+			std::cout << sortedSeq[i - 1] << " > " << sortedSeq[i] << std::endl;
 		}
 	}
 }
