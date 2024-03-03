@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:19:39 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/16 19:24:26 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/28 23:08:33 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int	main(int ac, char *av[])
 		std::cout << "Usage : ./PmergeMe <positive integer sequence>" << std::endl;
 		return (1);
 	}
-
 	return (0);
 }

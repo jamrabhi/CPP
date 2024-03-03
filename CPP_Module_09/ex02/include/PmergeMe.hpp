@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:43 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/19 21:54:54 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:59:58 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <vector>
 // # include <utility>
 # include <algorithm>
+# include <ctime>
+# include <deque>
 
 class PmergeMe
 {
@@ -31,11 +33,11 @@ class PmergeMe
 		PmergeMe	&operator=(PmergeMe const &rhs);
 
 		void	parseSequence(int ac, char *av[]);
-		void	merge_insert();
+		void	merge_insert_vector();
+		void	merge_insert_deque();
 
 	private:
 		std::vector<int>	_sequence;
-		// char **_sequence;
 };
 
 #endif
