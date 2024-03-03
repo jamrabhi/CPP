@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:33:54 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/12 22:16:27 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/03 23:08:07 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class BitcoinExchange
 		void	parseDatabase();
 		void	parseInput();
 		void	checkInput(std::string line);
-		void	checkValue(float value);
+		float	checkValue(std::string value);
 		void	checkDate(std::string date);
 		
 		std::ifstream	_database;

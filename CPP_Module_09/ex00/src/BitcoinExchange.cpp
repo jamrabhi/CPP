@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/13 22:20:35 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/03 23:34:33 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,7 @@ void	BitcoinExchange::checkInput(std::string line)
 	date = line.substr(0, i - 1);
 	checkDate(date);
 	
-	value = atof(line.substr(13).c_str());
-	checkValue(value);
+	value = checkValue(line.substr(13));
 
 	it_nearestDate = _dataMap.upper_bound(date);
 	if (it_nearestDate->first != date && it_nearestDate != _dataMap.begin())
@@ -147,14 +146,23 @@ void	BitcoinExchange::checkDate(std::string date)
 	year = atoi(date.substr(0, 4).c_str());
 	month = atoi(date.substr(5, 2).c_str());
 	day = atoi(date.substr(8, 2).c_str());
-	if (year < 2009 || month > 12 || day > 31)
+	if (year < 2009 || month < 1 || month > 12 || day < 1 ||  day > 31)
 		throw std::runtime_error("incorrect date => " + date);
 }
 
-void	BitcoinExchange::checkValue(float value)
+float	BitcoinExchange::checkValue(std::string value)
 {
-	if (value < 0)
+	for (size_t i = 0; i < value.length(); ++i)
+	{
+		if (!isdigit(value[i]))
+			throw std::runtime_error("incorrect value => " + value);
+	}
+
+	float	rt = atof(value.c_str());
+	if (rt < 0)
 		throw std::runtime_error("not a positive number.");
-	if (value > 1000)
+	if (rt > 1000)
 		throw std::runtime_error("too large a number.");
+
+	return (rt);
 }
