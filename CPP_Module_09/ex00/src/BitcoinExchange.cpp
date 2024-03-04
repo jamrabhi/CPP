@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/03/03 23:34:33 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/04 01:51:25 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,10 @@ void	BitcoinExchange::checkInput(std::string line)
 	value = checkValue(line.substr(13));
 
 	it_nearestDate = _dataMap.upper_bound(date);
-	if (it_nearestDate->first != date && it_nearestDate != _dataMap.begin())
+	if (it_nearestDate == _dataMap.end() || (it_nearestDate != _dataMap.begin() && it_nearestDate->first != date))
+	{
 		--it_nearestDate;
+	}
 	
 	std::cout << date << " => " << value << " = " << (it_nearestDate->second * value)
 		<< std::endl;
@@ -152,17 +154,20 @@ void	BitcoinExchange::checkDate(std::string date)
 
 float	BitcoinExchange::checkValue(std::string value)
 {
-	for (size_t i = 0; i < value.length(); ++i)
-	{
-		if (!isdigit(value[i]))
-			throw std::runtime_error("incorrect value => " + value);
-	}
-
 	float	rt = atof(value.c_str());
+
 	if (rt < 0)
 		throw std::runtime_error("not a positive number.");
 	if (rt > 1000)
 		throw std::runtime_error("too large a number.");
 
+	int count_dot = 0;
+	for (size_t i = 0; i < value.length(); ++i)
+	{
+		if (value[i] == '.')
+			count_dot++;
+		if ((!isdigit(value[i]) && value[i] != '.') || count_dot > 1)
+			throw std::runtime_error("incorrect value => " + value);
+	}
 	return (rt);
 }
