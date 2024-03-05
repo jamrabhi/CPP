@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/03/04 01:51:25 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:48:06 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ void	BitcoinExchange::parseInput()
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
 		nb_line++;
+	}
+	if (nb_line <= 1)
+	{
+		throw
+			std::runtime_error("empty file");
 	}
 }
 
