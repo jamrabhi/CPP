@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 19:06:41 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/13 22:30:06 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:26:26 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ void	RPN::evalExpr()
 
 void	RPN::do_op(char op)
 {
-	int	left_operand;
-	int right_operand;
+	long	left_operand;
+	long	right_operand;
+	long	rt;
 	
 	if (_numbers.size() < 2)
 		throw std::runtime_error("Error : not enough numbers");
@@ -85,18 +86,23 @@ void	RPN::do_op(char op)
 	switch (op)
 	{
 		case '+':
-			_numbers.push(left_operand + right_operand);
+			rt = left_operand + right_operand;
 			break;
 		case '-':
-			_numbers.push(left_operand - right_operand);
+			rt = left_operand - right_operand;
 			break;
 		case '/':
 			if (right_operand == 0)
 				throw std::runtime_error("Error : division by zero");
-			_numbers.push(left_operand / right_operand);
+			rt = left_operand / right_operand;
 			break;
 		case '*':
-			_numbers.push(left_operand * right_operand);
+			rt = left_operand * right_operand;
 			break;
 	}
+	
+	if (rt > std::numeric_limits<int>::max() || rt < std::numeric_limits<int>::min())
+		throw (std::runtime_error("Error : result overflows int limit"));
+	else
+		_numbers.push(rt);
 }

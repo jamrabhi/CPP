@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 19:06:44 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/02/13 22:17:01 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:23:35 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sstream>
 # include <cstdlib>
 # include <stdexcept>
+# include <limits>
 
 class RPN
 {
