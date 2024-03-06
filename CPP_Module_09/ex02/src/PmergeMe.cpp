@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/03/01 22:34:57 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:55:17 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PmergeMe::PmergeMe(int ac, char *av[])
 {
 	parseSequence(ac, av);
 
-	std::cout << "Before: \t";
+	std::cout << "Before:\t ";
 	for (std::vector<int>::iterator it = _sequence.begin(); it != _sequence.end(); ++it)
 	{
 		std::cout << *it << " ";
@@ -108,15 +108,14 @@ void	insertionSort(T &sortedSeq, T &unsortedSeq, U &pairSeq)
 		while (index > prev_jacobIndex)
 		{
 			typename T::iterator it_target;
-			
-			if (unsortedSeq[index - 1] != lastElem) // If odd element the last element is not in pairSeq
-				it_target = std::find(sortedSeq.begin(), sortedSeq.end(), pairSeq[index - 1].first);
+			if (unsortedSeq[index - 1] != lastElem)
+				it_target = std::lower_bound(sortedSeq.begin(), sortedSeq.end(), pairSeq[index - 1].first);
 			else // If odd element the last element is not in pairSeq
 				it_target = sortedSeq.end();
 
-			typename T::iterator insert = std::upper_bound(sortedSeq.begin(), it_target, unsortedSeq[index - 1]);
+			typename T::iterator insert_pos = std::upper_bound(sortedSeq.begin(), it_target, unsortedSeq[index - 1]);
 			
-			sortedSeq.insert(insert,unsortedSeq[index - 1]);
+			sortedSeq.insert(insert_pos, unsortedSeq[index - 1]);
 			index--;
 		}
 	}
@@ -226,14 +225,17 @@ void	PmergeMe::merge_insert_vector()
 
 	clock_t end = clock();
 
-	std::cout << "After: \t";
+	std::cout << "After:\t ";
 	for (std::vector<int>::iterator it = sortedSeq.begin(); it != sortedSeq.end(); ++it)
 	{
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
 
-	// std::cout << std::endl << "TEST IF SORTED :" << std::endl;
+	double elapsed_time_us = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+	std::cout << "Time to process a range of \t" << _sequence.size() << " elements with std::vector : " << elapsed_time_us << " us" << std::endl;
+
+	// std::cout << "TEST IF SORTED :" << std::endl;
 	// for (size_t i = 1; i < sortedSeq.size(); ++i)
 	// {
 	// 	if (sortedSeq[i] < sortedSeq[i - 1])
@@ -241,9 +243,6 @@ void	PmergeMe::merge_insert_vector()
 	// 		std::cout << sortedSeq[i - 1] << " > " << sortedSeq[i] << std::endl;
 	// 	}
 	// }
-
-	double elapsed_time_us = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-	std::cout << "Time to process a range of \t" << _sequence.size() << " elements with std::vector : " << elapsed_time_us << " us" << std::endl;
 }
 
 void	PmergeMe::merge_insert_deque()
@@ -297,7 +296,7 @@ void	PmergeMe::merge_insert_deque()
 	
 	std::cout << "Time to process a range of \t" << _sequence.size() << " elements with std::deque : " << elapsed_time_us << " us" << std::endl;
 
-	// std::cout << std::endl << "TEST IF SORTED :" << std::endl;
+	// std::cout << "TEST IF SORTED :" << std::endl;
 	// for (size_t i = 1; i < sortedSeq.size(); ++i)
 	// {
 	// 	if (sortedSeq[i] < sortedSeq[i - 1])
