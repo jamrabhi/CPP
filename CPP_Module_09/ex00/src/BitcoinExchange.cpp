@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/03/05 18:48:06 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/07 20:20:41 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,51 @@ void	BitcoinExchange::parseDatabase()
 {
 	std::string	line;
 	std::string	date;
+	std::string	value_str;
 	float		value;
 	size_t		i = 0;
+	int			nb_line = 0;
 
-	std::getline(_database, line);
 	while (std::getline(_database, line))
 	{
-		i = line.find(',');
-		
-		date = line.substr(0, i);
-		value = atof(line.substr(++i).c_str());
+		if (nb_line == 0)
+		{
+			if (line != "date,exchange_rate")
+				throw std::runtime_error("incorrect database");
+		}
+		else
+		{
+			i = line.find(',');
 
-		_dataMap.insert(std::pair<std::string, float>(date, value));
+			if (line.length() < 12 || i == std::string::npos || i != 10)
+				throw std::runtime_error("incorrect database");
+
+			date = line.substr(0, i);
+			if (date.length() != 10 || !isdigit(date[0]) || !isdigit(date[1]) ||
+					!isdigit(date[2]) || !isdigit(date[3]) || date[4] != '-' ||
+					!isdigit(date[5]) || !isdigit(date[6]) || date[7] != '-' ||
+					!isdigit(date[8]) || !isdigit(date[9]))
+				throw std::runtime_error("incorrect database");
+			++i;
+
+			value_str = line.substr(i);
+			
+			int count_dot = 0;
+			for (size_t i = 0; i < value_str.length(); i++)
+			{
+				if (value_str[i] == '.')
+					count_dot++;
+				if ((!isdigit(value_str[i]) && value_str[i] != '.') || count_dot > 1)
+					throw std::runtime_error("incorrect database");
+			}
+
+			value = atof(line.substr(i).c_str());
+			_dataMap.insert(std::pair<std::string, float>(date, value));
+		}
+		nb_line++;
 	}
+	if (nb_line <= 1)
+		throw std::runtime_error("empty database");
 }
 
 void	BitcoinExchange::parseInput()
