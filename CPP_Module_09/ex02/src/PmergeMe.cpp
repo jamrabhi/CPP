@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:21:33 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/03/06 21:55:17 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/07 18:51:50 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	insertionSort(T &sortedSeq, T &unsortedSeq, U &pairSeq)
 		while (index > prev_jacobIndex)
 		{
 			typename T::iterator it_target;
+			
 			if (unsortedSeq[index - 1] != lastElem)
 				it_target = std::lower_bound(sortedSeq.begin(), sortedSeq.end(), pairSeq[index - 1].first);
 			else // If odd element the last element is not in pairSeq
