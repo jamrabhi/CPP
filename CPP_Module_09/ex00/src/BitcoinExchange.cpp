@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:34:00 by jamrabhi          #+#    #+#             */
-/*   Updated: 2024/03/07 20:20:41 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:51:24 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,26 +84,21 @@ void	BitcoinExchange::parseDatabase()
 			if (line.length() < 12 || i == std::string::npos || i != 10)
 				throw std::runtime_error("incorrect database");
 
-			date = line.substr(0, i);
-			if (date.length() != 10 || !isdigit(date[0]) || !isdigit(date[1]) ||
-					!isdigit(date[2]) || !isdigit(date[3]) || date[4] != '-' ||
-					!isdigit(date[5]) || !isdigit(date[6]) || date[7] != '-' ||
-					!isdigit(date[8]) || !isdigit(date[9]))
-				throw std::runtime_error("incorrect database");
-			++i;
+			date = line.substr(0, 10);
+			checkDate(date);
 
-			value_str = line.substr(i);
+			value_str = line.substr(11);
 			
 			int count_dot = 0;
-			for (size_t i = 0; i < value_str.length(); i++)
+			for (size_t j = 0; j < value_str.length(); j++)
 			{
-				if (value_str[i] == '.')
+				if (value_str[j] == '.')
 					count_dot++;
-				if ((!isdigit(value_str[i]) && value_str[i] != '.') || count_dot > 1)
-					throw std::runtime_error("incorrect database");
+				if ((!isdigit(value_str[j]) && value_str[j] != '.') || count_dot > 1)
+					throw std::runtime_error("incorrect database" + value_str);
 			}
 
-			value = atof(line.substr(i).c_str());
+			value = atof(value_str.c_str());
 			_dataMap.insert(std::pair<std::string, float>(date, value));
 		}
 		nb_line++;
